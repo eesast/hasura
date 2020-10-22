@@ -6,8 +6,9 @@ before_install:
 install:
   - yarn
 script:
-  - echo 'skip travis script stage'
+  - yarn status --endpoint $HASURA_GRAPHQL_ENDPOINT
 deploy:
+  skip_cleanup: false
   provider: script
   script: bash scripts/deploy.sh
   on:

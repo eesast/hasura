@@ -7,7 +7,8 @@
     "apply": "hasura migrate apply && hasura metadata apply",
     "console": "hasura console",
     "hasura": "hasura",
-    "migrate-squash": "hasura migrate squash"
+    "migrate-squash": "hasura migrate squash",
+    "status": "hasura migrate status"
   },
   "private": true
 }
