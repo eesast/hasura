@@ -8,6 +8,7 @@ install:
 script:
   - echo 'skip travis script stage'
 deploy:
+  skip_cleanup: true
   provider: script
   script: bash scripts/deploy.sh
   on:
