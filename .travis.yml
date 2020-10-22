@@ -1,0 +1,12 @@
+language: node_js
+node_js: 14
+cache: yarn
+before_install:
+  - npm i -g yarn
+install:
+  - yarn
+deploy:
+  provider: script
+  script: bash scripts/deploy.sh
+  on:
+    branch: master
