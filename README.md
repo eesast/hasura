@@ -4,6 +4,8 @@ EESAST Hasura migrations and metadata files
 
 ## 开发
 
+[![Build Status](https://travis-ci.com/eesast/hasura.svg?branch=master)](https://travis-ci.com/eesast/hasura)
+
 ### 环境
 
 - Node.js npm / yarn: Use hasura-cli to manage

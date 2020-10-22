@@ -205,6 +205,21 @@
         - visible:
             _eq: true
       allow_aggregations: true
+  - role: EEsenior
+    permission:
+      columns:
+      - abstract
+      - alias
+      - authorId
+      - content
+      - created_at
+      - id
+      - title
+      - updated_at
+      - views
+      - visible
+      filter: {}
+      allow_aggregations: true
   - role: root
     permission:
       columns:
@@ -546,6 +561,12 @@
     using:
       foreign_key_constraint_on: tag_id
   insert_permissions:
+  - role: EEsenior
+    permission:
+      check: {}
+      columns:
+      - article_id
+      - tag_id
   - role: root
     permission:
       check: {}
@@ -572,6 +593,13 @@
       filter: {}
       allow_aggregations: true
   - role: counselor
+    permission:
+      columns:
+      - article_id
+      - tag_id
+      filter: {}
+      allow_aggregations: true
+  - role: EEsenior
     permission:
       columns:
       - article_id
@@ -2026,6 +2054,31 @@
       allow_aggregations: true
 - table:
     schema: public
+    name: team
+  object_relationships:
+  - name: user
+    using:
+      foreign_key_constraint_on: leader_id
+  array_relationships:
+  - name: team_members
+    using:
+      foreign_key_constraint_on:
+        column: team_id
+        table:
+          schema: public
+          name: team_member
+- table:
+    schema: public
+    name: team_member
+  object_relationships:
+  - name: team
+    using:
+      foreign_key_constraint_on: team_id
+  - name: user
+    using:
+      foreign_key_constraint_on: user_id
+- table:
+    schema: public
     name: user
   object_relationships:
   - name: mentor_available
@@ -2072,6 +2125,20 @@
         table:
           schema: public
           name: mentor_application
+  - name: team_as_leader
+    using:
+      foreign_key_constraint_on:
+        column: leader_id
+        table:
+          schema: public
+          name: team
+  - name: team_as_member
+    using:
+      foreign_key_constraint_on:
+        column: user_id
+        table:
+          schema: public
+          name: team_member
   insert_permissions:
   - role: root
     permission:
