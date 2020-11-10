@@ -16,6 +16,10 @@ EESAST Hasura migrations and metadata files
 - git
 - any terminal or vscode
 
+### 使用
+
+使用 EESAST 服务器上的 `hasura-dev` 时，需在本地的 `.env` 中添加相应的 `HASURA_GRAPHQL_ENDPOINT` 和 `HASURA_GRAPHQL_ADMIN_SECRET`
+
 ### 脚本
 
 围绕 Hasura CLI 展开，参看[文档](https://hasura.io/docs/1.0/graphql/core/hasura-cli/index.html)
