@@ -26,7 +26,7 @@ EESAST Hasura migrations and metadata files
 
 > 使用 Hasura CLI 启动的 console 页面会记录所有更改，请务必不要使用 docker 自带的 console（`docker-compose.yaml`中已禁用该功能）
 
-#### `apply"`
+#### `apply`
 
 将仓库中的 migrations 和 metadata 应用在本地 docker 中运行的 Hasura 和 postgres 上
 
