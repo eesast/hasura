@@ -1,3 +1,6 @@
+# 配置文件参考：
+# https://hasura.io/docs/1.0/graphql/core/hasura-cli/config-reference.html
+# 使用环境变量可以对如下配置进行修改
 version: 2
 endpoint: http://localhost:23333
 metadata_directory: metadata

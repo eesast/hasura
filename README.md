@@ -20,6 +20,8 @@ EESAST Hasura migrations and metadata files
 
 使用 EESAST 服务器上的 `hasura-dev` 时，需在本地的 `.env` 中添加相应的 `HASURA_GRAPHQL_ENDPOINT` 和 `HASURA_GRAPHQL_ADMIN_SECRET`
 
+其他环境变量含义见[hasura-cli config-reference](https://hasura.io/docs/1.0/graphql/core/hasura-cli/config-reference.html)
+
 ### 脚本
 
 围绕 Hasura CLI 展开，参看[文档](https://hasura.io/docs/1.0/graphql/core/hasura-cli/index.html)
