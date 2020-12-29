@@ -33,5 +33,5 @@ jobs:
 
       - name: apply
         run: |
-          yarn hasura migrate apply --endpoint ${{secrets.HASURA_GRAPHQL_ENDPOINT}}
-          yarn hasura metadata apply --endpoint ${{secrets.HASURA_GRAPHQL_ENDPOINT}}
+          yarn hasura migrate apply --endpoint ${{secrets.HASURA_GRAPHQL_ENDPOINT}} --admin-secret ${{secrets.HASURA_GRAPHQL_ADMIN_SECRET}}
+          yarn hasura metadata apply --endpoint ${{secrets.HASURA_GRAPHQL_ENDPOINT}} --admin-secret ${{secrets.HASURA_GRAPHQL_ADMIN_SECRET}}
