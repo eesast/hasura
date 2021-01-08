@@ -1187,6 +1187,20 @@
       - field
       - intro
       backend_only: false
+  - role: teacher
+    permission:
+      check:
+        mentor_id:
+          _eq: X-Hasura-User-Id
+      columns:
+      - mentor_id
+      - intro
+      - background
+      - field
+      - achievement
+      - created_at
+      - updated_at
+      backend_only: false
   select_permissions:
   - role: counselor
     permission:
