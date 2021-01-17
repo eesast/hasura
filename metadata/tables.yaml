@@ -2265,6 +2265,13 @@
         table:
           schema: public
           name: mentor_application
+  - name: mentor_info
+    using:
+      foreign_key_constraint_on:
+        column: mentor_id
+        table:
+          schema: public
+          name: mentor_info
   - name: team_as_leader
     using:
       foreign_key_constraint_on:
