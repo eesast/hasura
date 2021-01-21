@@ -1074,6 +1074,11 @@
   - role: root
     permission:
       filter: {}
+  - role: student
+    permission:
+      filter:
+        student_id:
+          _eq: X-Hasura-User-Id
 - table:
     schema: public
     name: mentor_available
