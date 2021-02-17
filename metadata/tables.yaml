@@ -2199,24 +2199,69 @@
   - name: user
     using:
       foreign_key_constraint_on: leader_id
-  array_relationships:
-  - name: team_members
-    using:
-      foreign_key_constraint_on:
-        column: team_id
-        table:
-          schema: public
-          name: team_member
 - table:
     schema: public
     name: team_member
   object_relationships:
-  - name: team
-    using:
-      foreign_key_constraint_on: team_id
   - name: user
     using:
       foreign_key_constraint_on: user_id
+  array_relationships:
+  - name: team_leader_to_team_members
+    using:
+      manual_configuration:
+        remote_table:
+          schema: public
+          name: thuai
+        column_mapping:
+          user_id: team_leader
+  - name: team_member
+    using:
+      manual_configuration:
+        remote_table:
+          schema: public
+          name: thuai
+        column_mapping:
+          team_id: team_id
+- table:
+    schema: public
+    name: thuai
+  object_relationships:
+  - name: user
+    using:
+      foreign_key_constraint_on: team_leader
+  array_relationships:
+  - name: team_members
+    using:
+      manual_configuration:
+        remote_table:
+          schema: public
+          name: team_member
+        column_mapping:
+          team_id: team_id
+  insert_permissions:
+  - role: student
+    permission:
+      check: {}
+      columns:
+      - team_id
+      - team_name
+      - team_sum
+      - team_leader
+      - created_at
+      - invited_code
+      backend_only: false
+  select_permissions:
+  - role: student
+    permission:
+      columns:
+      - invited_code
+      - team_leader
+      - team_name
+      - team_sum
+      - created_at
+      - team_id
+      filter: {}
 - table:
     schema: public
     name: user
@@ -2267,11 +2312,12 @@
           name: mentor_application
   - name: team_as_leader
     using:
-      foreign_key_constraint_on:
-        column: leader_id
-        table:
+      manual_configuration:
+        remote_table:
           schema: public
-          name: team
+          name: thuai
+        column_mapping:
+          _id: team_leader
   - name: team_as_member
     using:
       foreign_key_constraint_on:
