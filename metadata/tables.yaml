@@ -2223,10 +2223,33 @@
           name: thuai
         column_mapping:
           team_id: team_id
+  insert_permissions:
+  - role: student
+    permission:
+      check: {}
+      columns:
+      - team_id
+      - user_id
+      backend_only: false
+  select_permissions:
+  - role: student
+    permission:
+      columns:
+      - user_id
+      - team_id
+      filter: {}
 - table:
     schema: public
     name: thuai
   object_relationships:
+  - name: team_leader_name
+    using:
+      manual_configuration:
+        remote_table:
+          schema: public
+          name: user
+        column_mapping:
+          team_leader: name
   - name: user
     using:
       foreign_key_constraint_on: team_leader
