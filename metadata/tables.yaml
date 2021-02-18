@@ -1074,6 +1074,11 @@
   - role: root
     permission:
       filter: {}
+  - role: student
+    permission:
+      filter:
+        student_id:
+          _eq: X-Hasura-User-Id
 - table:
     schema: public
     name: mentor_available
@@ -2223,33 +2228,17 @@
           name: thuai
         column_mapping:
           team_id: team_id
-  insert_permissions:
-  - role: student
-    permission:
-      check: {}
-      columns:
-      - team_id
-      - user_id
-      backend_only: false
   select_permissions:
   - role: student
     permission:
       columns:
-      - user_id
       - team_id
+      - user_id
       filter: {}
 - table:
     schema: public
     name: thuai
   object_relationships:
-  - name: team_leader_name
-    using:
-      manual_configuration:
-        remote_table:
-          schema: public
-          name: user
-        column_mapping:
-          team_leader: name
   - name: user
     using:
       foreign_key_constraint_on: team_leader
@@ -2333,6 +2322,13 @@
         table:
           schema: public
           name: mentor_application
+  - name: mentor_info
+    using:
+      foreign_key_constraint_on:
+        column: mentor_id
+        table:
+          schema: public
+          name: mentor_info
   - name: team_as_leader
     using:
       manual_configuration:
