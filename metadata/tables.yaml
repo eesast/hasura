@@ -2228,6 +2228,14 @@
           name: thuai
         column_mapping:
           team_id: team_id
+  insert_permissions:
+  - role: student
+    permission:
+      check: {}
+      columns:
+      - team_id
+      - user_id
+      backend_only: false
   select_permissions:
   - role: student
     permission:
