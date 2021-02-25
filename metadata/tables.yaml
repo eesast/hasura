@@ -1079,6 +1079,29 @@
       filter:
         student_id:
           _eq: X-Hasura-User-Id
+  event_triggers:
+  - name: send_email
+    definition:
+      enable_manual: true
+      insert:
+        columns: '*'
+      update:
+        columns:
+        - mentor_id
+        - statement
+        - student_id
+        - created_at
+        - updated_at
+        - id
+        - status
+    retry_conf:
+      num_retries: 0
+      interval_sec: 10
+      timeout_sec: 60
+    webhook: https://api.eesast.com/emails/events
+    headers:
+    - name: x-hasura-action-secret
+      value_from_env: ACTION_SECRET
 - table:
     schema: public
     name: mentor_available
@@ -2228,6 +2251,25 @@
           name: thuai
         column_mapping:
           team_id: team_id
+  insert_permissions:
+  - role: student
+    permission:
+      check: {}
+      columns:
+      - team_id
+      - user_id
+      backend_only: false
+  select_permissions:
+  - role: student
+    permission:
+      columns:
+      - team_id
+      - user_id
+      filter: {}
+  delete_permissions:
+  - role: student
+    permission:
+      filter: {}
 - table:
     schema: public
     name: thuai
@@ -2266,6 +2308,18 @@
       - team_sum
       - created_at
       - team_id
+      filter: {}
+  update_permissions:
+  - role: student
+    permission:
+      columns:
+      - team_name
+      - team_sum
+      filter: {}
+      check: {}
+  delete_permissions:
+  - role: student
+    permission:
       filter: {}
 - table:
     schema: public
