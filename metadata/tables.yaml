@@ -1079,6 +1079,32 @@
       filter:
         student_id:
           _eq: X-Hasura-User-Id
+<<<<<<< HEAD
+=======
+  event_triggers:
+  - name: send_email
+    definition:
+      enable_manual: true
+      insert:
+        columns: '*'
+      update:
+        columns:
+        - mentor_id
+        - statement
+        - student_id
+        - created_at
+        - updated_at
+        - id
+        - status
+    retry_conf:
+      num_retries: 0
+      interval_sec: 10
+      timeout_sec: 60
+    webhook: https://api.eesast.com/emails/events
+    headers:
+    - name: x-hasura-action-secret
+      value_from_env: ACTION_SECRET
+>>>>>>> 9ba01456bfd1c5cf29db61d1f7743c213b2a2197
 - table:
     schema: public
     name: mentor_available
@@ -1644,6 +1670,9 @@
   - name: user
     using:
       foreign_key_constraint_on: user_id
+  - name: userEditor
+    using:
+      foreign_key_constraint_on: editor
   array_relationships:
   - name: applications
     using:
@@ -1656,85 +1685,101 @@
   - role: counselor
     permission:
       check: {}
+      set:
+        editor: x-hasura-User-Id
       columns:
+      - verified
       - id
+      - alternate_contact
+      - contact
+      - detail_info
+      - field
+      - home_page
+      - mentor
       - created_at
       - updated_at
-      - mentor
-      - field
-      - phd_quota
-      - contact
-      - home_page
-      - alternate_contact
-      - detail_info
+      - editor
       - user_id
-      - verified
+      - phd_quota
+      - phd_quota_unfixed
       backend_only: false
   - role: root
     permission:
       check: {}
+      set:
+        editor: x-hasura-User-Id
       columns:
+      - verified
       - id
+      - alternate_contact
+      - contact
+      - detail_info
+      - field
+      - home_page
+      - mentor
       - created_at
       - updated_at
-      - mentor
-      - field
-      - phd_quota
-      - contact
-      - home_page
-      - alternate_contact
-      - detail_info
+      - editor
       - user_id
-      - verified
+      - phd_quota
+      - phd_quota_unfixed
       backend_only: false
   - role: teacher
     permission:
       check: {}
+      set:
+        editor: x-hasura-User-Id
       columns:
+      - verified
+      - id
       - alternate_contact
       - contact
-      - created_at
       - detail_info
       - field
       - home_page
-      - id
       - mentor
-      - phd_quota
+      - created_at
       - updated_at
+      - editor
       - user_id
-      - verified
+      - phd_quota
+      - phd_quota_unfixed
       backend_only: false
   select_permissions:
   - role: counselor
     permission:
       columns:
+      - verified
       - id
+      - alternate_contact
+      - contact
+      - detail_info
+      - field
+      - home_page
+      - mentor
       - created_at
       - updated_at
-      - mentor
-      - field
-      - phd_quota
-      - contact
-      - home_page
-      - alternate_contact
-      - detail_info
+      - editor
       - user_id
-      - verified
+      - phd_quota
+      - phd_quota_unfixed
       filter: {}
       allow_aggregations: true
   - role: EEsenior
     permission:
       columns:
-      - id
-      - created_at
-      - updated_at
-      - mentor
-      - field
-      - phd_quota
-      - contact
-      - home_page
       - alternate_contact
+      - contact
+      - created_at
       - detail_info
+      - editor
+      - field
+      - home_page
+      - id
+      - mentor
+      - phd_quota
+      - phd_quota_unfixed
+      - updated_at
       - user_id
       - verified
       filter: {}
@@ -1744,7 +1789,6 @@
       columns:
       - verified
       - id
-      - phd_quota
       - alternate_contact
       - contact
       - detail_info
@@ -1753,7 +1797,10 @@
       - mentor
       - created_at
       - updated_at
+      - editor
       - user_id
+      - phd_quota
+      - phd_quota_unfixed
       filter: {}
       allow_aggregations: true
   - role: teacher
@@ -1761,7 +1808,6 @@
       columns:
       - verified
       - id
-      - phd_quota
       - alternate_contact
       - contact
       - detail_info
@@ -1770,33 +1816,39 @@
       - mentor
       - created_at
       - updated_at
+      - editor
       - user_id
+      - phd_quota
+      - phd_quota_unfixed
       filter: {}
       allow_aggregations: true
   update_permissions:
   - role: counselor
     permission:
       columns:
-      - verified
-      - id
-      - phd_quota
       - alternate_contact
       - contact
+      - created_at
       - detail_info
+      - editor
       - field
       - home_page
+      - id
       - mentor
-      - created_at
+      - phd_quota
+      - phd_quota_unfixed
       - updated_at
       - user_id
+      - verified
       filter: {}
       check: {}
+      set:
+        user_id: x-hasura-User-Id
   - role: root
     permission:
       columns:
       - verified
       - id
-      - phd_quota
       - alternate_contact
       - contact
       - detail_info
@@ -1805,15 +1857,19 @@
       - mentor
       - created_at
       - updated_at
+      - editor
       - user_id
+      - phd_quota
+      - phd_quota_unfixed
       filter: {}
       check: {}
+      set:
+        editor: x-hasura-User-Id
   - role: teacher
     permission:
       columns:
       - verified
       - id
-      - phd_quota
       - alternate_contact
       - contact
       - detail_info
@@ -1822,9 +1878,14 @@
       - mentor
       - created_at
       - updated_at
+      - editor
       - user_id
+      - phd_quota
+      - phd_quota_unfixed
       filter: {}
       check: {}
+      set:
+        editor: x-hasura-User-Id
   delete_permissions:
   - role: counselor
     permission:
@@ -2243,6 +2304,13 @@
       - team_id
       - user_id
       filter: {}
+<<<<<<< HEAD
+=======
+  delete_permissions:
+  - role: student
+    permission:
+      filter: {}
+>>>>>>> 9ba01456bfd1c5cf29db61d1f7743c213b2a2197
 - table:
     schema: public
     name: thuai
@@ -2282,6 +2350,21 @@
       - created_at
       - team_id
       filter: {}
+<<<<<<< HEAD
+=======
+  update_permissions:
+  - role: student
+    permission:
+      columns:
+      - team_name
+      - team_sum
+      filter: {}
+      check: {}
+  delete_permissions:
+  - role: student
+    permission:
+      filter: {}
+>>>>>>> 9ba01456bfd1c5cf29db61d1f7743c213b2a2197
 - table:
     schema: public
     name: user
