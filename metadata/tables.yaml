@@ -298,6 +298,12 @@
       - updated_at
       filter: {}
       check: {}
+  - role: teacher
+    permission:
+      columns:
+      - content
+      filter: {}
+      check: {}
 - table:
     schema: public
     name: article_liker
@@ -2286,9 +2292,21 @@
           name: thuai
         column_mapping:
           team_id: team_id
-<<<<<<< HEAD
-=======
   insert_permissions:
+  - role: EEsenior
+    permission:
+      check: {}
+      columns:
+      - user_id
+      - team_id
+      backend_only: false
+  - role: root
+    permission:
+      check: {}
+      columns:
+      - team_id
+      - user_id
+      backend_only: false
   - role: student
     permission:
       check: {}
@@ -2297,17 +2315,42 @@
       - user_id
       backend_only: false
   select_permissions:
+  - role: EEsenior
+    permission:
+      columns:
+      - user_id
+      - team_id
+      filter: {}
+  - role: root
+    permission:
+      columns:
+      - team_id
+      - user_id
+      filter: {}
   - role: student
     permission:
       columns:
       - team_id
       - user_id
       filter: {}
+  update_permissions:
+  - role: root
+    permission:
+      columns:
+      - team_id
+      - user_id
+      filter: {}
+      check: null
   delete_permissions:
+  - role: EEsenior
+    permission:
+      filter: {}
+  - role: root
+    permission:
+      filter: {}
   - role: student
     permission:
       filter: {}
->>>>>>> 9ba01456bfd1c5cf29db61d1f7743c213b2a2197
 - table:
     schema: public
     name: thuai
@@ -2325,6 +2368,29 @@
         column_mapping:
           team_id: team_id
   insert_permissions:
+  - role: EEsenior
+    permission:
+      check: {}
+      columns:
+      - created_at
+      - invited_code
+      - team_id
+      - team_leader
+      - team_name
+      - team_sum
+      backend_only: false
+  - role: root
+    permission:
+      check: {}
+      columns:
+      - team_id
+      - team_name
+      - team_sum
+      - team_leader
+      - created_at
+      - invited_code
+      - score
+      backend_only: false
   - role: student
     permission:
       check: {}
@@ -2337,6 +2403,26 @@
       - invited_code
       backend_only: false
   select_permissions:
+  - role: EEsenior
+    permission:
+      columns:
+      - invited_code
+      - team_id
+      - team_leader
+      - team_name
+      - team_sum
+      filter: {}
+  - role: root
+    permission:
+      columns:
+      - score
+      - invited_code
+      - team_leader
+      - team_name
+      - team_sum
+      - created_at
+      - team_id
+      filter: {}
   - role: student
     permission:
       columns:
@@ -2347,9 +2433,26 @@
       - created_at
       - team_id
       filter: {}
-<<<<<<< HEAD
-=======
   update_permissions:
+  - role: EEsenior
+    permission:
+      columns:
+      - team_name
+      - team_sum
+      filter: {}
+      check: {}
+  - role: root
+    permission:
+      columns:
+      - score
+      - invited_code
+      - team_leader
+      - team_name
+      - team_sum
+      - created_at
+      - team_id
+      filter: {}
+      check: {}
   - role: student
     permission:
       columns:
@@ -2358,10 +2461,46 @@
       filter: {}
       check: {}
   delete_permissions:
+  - role: EEsenior
+    permission:
+      filter: {}
+  - role: root
+    permission:
+      filter: {}
   - role: student
     permission:
       filter: {}
->>>>>>> 9ba01456bfd1c5cf29db61d1f7743c213b2a2197
+- table:
+    schema: public
+    name: thuai_code
+- table:
+    schema: public
+    name: thuai_manager
+  object_relationships:
+  - name: manager_user
+    using:
+      foreign_key_constraint_on: manager_id
+- table:
+    schema: public
+    name: thuai_room
+  array_relationships:
+  - name: thuai_room_teams
+    using:
+      foreign_key_constraint_on:
+        column: room_id
+        table:
+          schema: public
+          name: thuai_room_team
+- table:
+    schema: public
+    name: thuai_room_team
+  object_relationships:
+  - name: thuai_room
+    using:
+      foreign_key_constraint_on: room_id
+  - name: thuai_team
+    using:
+      foreign_key_constraint_on: thuai_team_id
 - table:
     schema: public
     name: user
@@ -2412,11 +2551,6 @@
           name: mentor_application
   - name: mentor_info
     using:
-<<<<<<< HEAD
-      manual_configuration:
-        remote_table:
-          schema: public
-=======
       foreign_key_constraint_on:
         column: mentor_id
         table:
@@ -2427,7 +2561,6 @@
       manual_configuration:
         remote_table:
           schema: public
->>>>>>> 9ba01456bfd1c5cf29db61d1f7743c213b2a2197
           name: thuai
         column_mapping:
           _id: team_leader
