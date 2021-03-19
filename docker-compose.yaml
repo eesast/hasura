@@ -1,0 +1,33 @@
+version: "3.6"
+services:
+  postgres:
+    image: postgres:12
+    container_name: postgres
+    restart: always
+    volumes:
+      # - ~/data/postgres:/var/lib/postgresql/data
+      # 上面的存储每次都与本机绑定，若直接删除docker，hasura的所有数据删不干净
+      - /var/lib/postgresql/data
+      # 查看这个文件夹:
+      # `docker ps` -> `docker exec -it [postgres:12.ID] /bin/bash`
+      # -> `cd /var/lib/postgresql/data` -> `ls`
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: password
+  graphql-engine:
+    image: hasura/graphql-engine:latest
+    container_name: hasura
+    ports:
+      - "23333:8080"
+    depends_on:
+      - "postgres"
+    restart: always
+    environment:
+      HASURA_GRAPHQL_DATABASE_URL: postgres://postgres:password@postgres:5432/postgres
+      HASURA_GRAPHQL_ENABLE_CONSOLE: "false"
+      # set to "false" to disable console
+      # use hasura cli consle instead
+      HASURA_GRAPHQL_ENABLED_LOG_TYPES: startup, http-log, webhook-log, websocket-log, query-log
+      ## uncomment next line to set an admin secret
+      # HASURA_GRAPHQL_ADMIN_SECRET: myadminsecretkey

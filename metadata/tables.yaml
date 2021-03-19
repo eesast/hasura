@@ -1,0 +1,2535 @@
+- table:
+    schema: public
+    name: aid_application
+  object_relationships:
+  - name: student
+    using:
+      foreign_key_constraint_on: student_id
+  insert_permissions:
+  - role: counselor
+    permission:
+      check: {}
+      columns:
+      - id
+      - created_at
+      - updated_at
+      - aid
+      - amount
+      - status
+      - student_id
+      - thank_letter
+      - code
+      - form_url
+      backend_only: false
+  - role: root
+    permission:
+      check: {}
+      columns:
+      - id
+      - created_at
+      - updated_at
+      - aid
+      - amount
+      - status
+      - student_id
+      - thank_letter
+      - code
+      - form_url
+      backend_only: false
+  select_permissions:
+  - role: counselor
+    permission:
+      columns:
+      - amount
+      - aid
+      - code
+      - form_url
+      - status
+      - student_id
+      - thank_letter
+      - created_at
+      - updated_at
+      - id
+      filter: {}
+  - role: EEsenior
+    permission:
+      columns:
+      - id
+      - created_at
+      - updated_at
+      - aid
+      - amount
+      - status
+      - student_id
+      - thank_letter
+      - code
+      - form_url
+      filter:
+        student_id:
+          _eq: X-Hasura-User-Id
+  - role: root
+    permission:
+      columns:
+      - amount
+      - aid
+      - code
+      - form_url
+      - status
+      - student_id
+      - thank_letter
+      - created_at
+      - updated_at
+      - id
+      filter: {}
+      allow_aggregations: true
+  - role: student
+    permission:
+      columns:
+      - id
+      - created_at
+      - updated_at
+      - aid
+      - amount
+      - status
+      - student_id
+      - thank_letter
+      - code
+      - form_url
+      filter:
+        student_id:
+          _eq: X-Hasura-User-Id
+  update_permissions:
+  - role: EEsenior
+    permission:
+      columns:
+      - form_url
+      - thank_letter
+      filter:
+        student_id:
+          _eq: X-Hasura-User-Id
+      check:
+        student_id:
+          _eq: X-Hasura-User-Id
+  - role: root
+    permission:
+      columns:
+      - amount
+      - aid
+      - code
+      - form_url
+      - status
+      - student_id
+      - thank_letter
+      - created_at
+      - updated_at
+      - id
+      filter: {}
+      check: {}
+  - role: student
+    permission:
+      columns:
+      - form_url
+      - thank_letter
+      filter:
+        student_id:
+          _eq: X-Hasura-User-Id
+      check:
+        student_id:
+          _eq: X-Hasura-User-Id
+  delete_permissions:
+  - role: counselor
+    permission:
+      filter: {}
+  - role: root
+    permission:
+      filter: {}
+- table:
+    schema: public
+    name: article
+  object_relationships:
+  - name: author
+    using:
+      foreign_key_constraint_on: authorId
+  array_relationships:
+  - name: article_likers
+    using:
+      foreign_key_constraint_on:
+        column: article_id
+        table:
+          schema: public
+          name: article_liker
+  - name: article_tags
+    using:
+      foreign_key_constraint_on:
+        column: article_id
+        table:
+          schema: public
+          name: article_tag
+  - name: comments
+    using:
+      foreign_key_constraint_on:
+        column: article_id
+        table:
+          schema: public
+          name: comment
+  select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+      - abstract
+      - alias
+      - authorId
+      - content
+      - id
+      - title
+      - updated_at
+      - views
+      filter:
+        _and:
+        - visible:
+            _eq: true
+      allow_aggregations: true
+  - role: counselor
+    permission:
+      columns:
+      - abstract
+      - alias
+      - authorId
+      - content
+      - id
+      - title
+      - updated_at
+      - views
+      filter:
+        _and:
+        - visible:
+            _eq: true
+      allow_aggregations: true
+  - role: EEsenior
+    permission:
+      columns:
+      - abstract
+      - alias
+      - authorId
+      - content
+      - created_at
+      - id
+      - title
+      - updated_at
+      - views
+      - visible
+      filter: {}
+      allow_aggregations: true
+  - role: root
+    permission:
+      columns:
+      - abstract
+      - alias
+      - authorId
+      - content
+      - created_at
+      - id
+      - title
+      - updated_at
+      - views
+      - visible
+      filter: {}
+      allow_aggregations: true
+  - role: student
+    permission:
+      columns:
+      - abstract
+      - alias
+      - authorId
+      - content
+      - created_at
+      - id
+      - title
+      - updated_at
+      - views
+      - visible
+      filter: {}
+      allow_aggregations: true
+  - role: teacher
+    permission:
+      columns:
+      - abstract
+      - alias
+      - authorId
+      - content
+      - id
+      - title
+      - updated_at
+      - views
+      filter:
+        _and:
+        - visible:
+            _eq: true
+      allow_aggregations: true
+  - role: user
+    permission:
+      columns:
+      - abstract
+      - alias
+      - authorId
+      - content
+      - id
+      - title
+      - updated_at
+      - views
+      filter:
+        _and:
+        - visible:
+            _eq: true
+      allow_aggregations: true
+  update_permissions:
+  - role: root
+    permission:
+      columns:
+      - visible
+      - id
+      - views
+      - abstract
+      - alias
+      - authorId
+      - content
+      - title
+      - created_at
+      - updated_at
+      filter: {}
+      check: {}
+- table:
+    schema: public
+    name: article_liker
+  object_relationships:
+  - name: article
+    using:
+      foreign_key_constraint_on: article_id
+  - name: liker
+    using:
+      foreign_key_constraint_on: user_id
+  insert_permissions:
+  - role: student
+    permission:
+      check:
+        user_id:
+          _eq: X-Hasura-User-Id
+      set:
+        user_id: x-hasura-User-Id
+      columns:
+      - article_id
+      backend_only: false
+  select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+      - article_id
+      - user_id
+      filter: {}
+      allow_aggregations: true
+  - role: counselor
+    permission:
+      columns:
+      - article_id
+      - user_id
+      filter: {}
+      allow_aggregations: true
+  - role: root
+    permission:
+      columns:
+      - article_id
+      - user_id
+      filter: {}
+      allow_aggregations: true
+  - role: student
+    permission:
+      columns:
+      - article_id
+      - user_id
+      filter: {}
+      allow_aggregations: true
+  - role: teacher
+    permission:
+      columns:
+      - article_id
+      - user_id
+      filter: {}
+      allow_aggregations: true
+  - role: user
+    permission:
+      columns:
+      - article_id
+      - user_id
+      filter: {}
+      allow_aggregations: true
+- table:
+    schema: public
+    name: article_public
+  object_relationships:
+  - name: author
+    using:
+      manual_configuration:
+        remote_table:
+          schema: public
+          name: user
+        column_mapping:
+          authorId: _id
+  array_relationships:
+  - name: article_likers
+    using:
+      manual_configuration:
+        remote_table:
+          schema: public
+          name: article_liker
+        column_mapping:
+          id: article_id
+  - name: article_tags
+    using:
+      manual_configuration:
+        remote_table:
+          schema: public
+          name: article_tag
+        column_mapping:
+          id: article_id
+  - name: comments
+    using:
+      manual_configuration:
+        remote_table:
+          schema: public
+          name: comment
+        column_mapping:
+          id: article_id
+  select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+      - abstract
+      - alias
+      - authorId
+      - content
+      - created_at
+      - id
+      - title
+      - views
+      - visible
+      filter: {}
+      allow_aggregations: true
+  - role: counselor
+    permission:
+      columns:
+      - abstract
+      - alias
+      - authorId
+      - content
+      - created_at
+      - id
+      - title
+      - views
+      filter:
+        visible:
+          _eq: true
+      allow_aggregations: true
+  - role: root
+    permission:
+      columns:
+      - abstract
+      - alias
+      - authorId
+      - content
+      - created_at
+      - id
+      - title
+      - views
+      filter:
+        visible:
+          _eq: true
+      allow_aggregations: true
+  - role: student
+    permission:
+      columns:
+      - abstract
+      - alias
+      - authorId
+      - content
+      - created_at
+      - id
+      - title
+      - views
+      filter:
+        visible:
+          _eq: true
+      allow_aggregations: true
+  - role: teacher
+    permission:
+      columns:
+      - abstract
+      - alias
+      - authorId
+      - content
+      - created_at
+      - id
+      - title
+      - views
+      filter:
+        visible:
+          _eq: true
+      allow_aggregations: true
+  - role: user
+    permission:
+      columns:
+      - abstract
+      - alias
+      - authorId
+      - content
+      - created_at
+      - id
+      - title
+      - views
+      filter:
+        visible:
+          _eq: true
+      allow_aggregations: true
+  update_permissions:
+  - role: anonymous
+    permission:
+      columns:
+      - views
+      filter:
+        visible:
+          _eq: true
+      check:
+        visible:
+          _eq: true
+  - role: counselor
+    permission:
+      columns:
+      - views
+      filter:
+        visible:
+          _eq: true
+      check:
+        visible:
+          _eq: true
+  - role: root
+    permission:
+      columns:
+      - views
+      filter:
+        visible:
+          _eq: true
+      check:
+        visible:
+          _eq: true
+  - role: student
+    permission:
+      columns:
+      - views
+      filter:
+        visible:
+          _eq: true
+      check:
+        visible:
+          _eq: true
+  - role: teacher
+    permission:
+      columns:
+      - views
+      filter:
+        visible:
+          _eq: true
+      check:
+        visible:
+          _eq: true
+  - role: user
+    permission:
+      columns:
+      - views
+      filter:
+        visible:
+          _eq: true
+      check:
+        visible:
+          _eq: true
+- table:
+    schema: public
+    name: article_tag
+  object_relationships:
+  - name: article
+    using:
+      foreign_key_constraint_on: article_id
+  - name: tag
+    using:
+      foreign_key_constraint_on: tag_id
+  insert_permissions:
+  - role: EEsenior
+    permission:
+      check: {}
+      columns:
+      - article_id
+      - tag_id
+  - role: root
+    permission:
+      check: {}
+      columns:
+      - article_id
+      - tag_id
+      backend_only: false
+  - role: student
+    permission:
+      check:
+        article:
+          authorId:
+            _eq: X-Hasura-User-Id
+      columns:
+      - article_id
+      - tag_id
+      backend_only: false
+  select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+      - article_id
+      - tag_id
+      filter: {}
+      allow_aggregations: true
+  - role: counselor
+    permission:
+      columns:
+      - article_id
+      - tag_id
+      filter: {}
+      allow_aggregations: true
+  - role: EEsenior
+    permission:
+      columns:
+      - article_id
+      - tag_id
+      filter: {}
+      allow_aggregations: true
+  - role: root
+    permission:
+      columns:
+      - article_id
+      - tag_id
+      filter: {}
+      allow_aggregations: true
+  - role: student
+    permission:
+      columns:
+      - article_id
+      - tag_id
+      filter: {}
+      allow_aggregations: true
+  - role: teacher
+    permission:
+      columns:
+      - article_id
+      - tag_id
+      filter: {}
+      allow_aggregations: true
+  - role: user
+    permission:
+      columns:
+      - article_id
+      - tag_id
+      filter: {}
+      allow_aggregations: true
+- table:
+    schema: public
+    name: comment
+  object_relationships:
+  - name: article
+    using:
+      foreign_key_constraint_on: article_id
+  - name: user
+    using:
+      foreign_key_constraint_on: user_id
+  select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+      - content
+      - id
+      - updated_at
+      filter: {}
+  - role: root
+    permission:
+      columns:
+      - article_id
+      - content
+      - user_id
+      - created_at
+      - updated_at
+      - id
+      filter: {}
+- table:
+    schema: public
+    name: honor_application
+  object_relationships:
+  - name: student
+    using:
+      foreign_key_constraint_on: student_id
+  insert_permissions:
+  - role: EEsenior
+    permission:
+      check:
+        _and:
+        - student_id:
+            _eq: X-Hasura-User-Id
+        - created_at:
+            _lt: "2020-10-05T15:59:59+00:00"
+      columns:
+      - attachment_url
+      - honor
+      - statement
+      - status
+      - student_id
+      backend_only: false
+  - role: root
+    permission:
+      check: {}
+      columns:
+      - id
+      - created_at
+      - updated_at
+      - student_id
+      - statement
+      - attachment_url
+      - honor
+      - status
+      backend_only: false
+  - role: student
+    permission:
+      check:
+        _and:
+        - student_id:
+            _eq: X-Hasura-User-Id
+        - created_at:
+            _lt: "2020-10-05T15:59:59+00:00"
+      columns:
+      - attachment_url
+      - honor
+      - statement
+      - status
+      - student_id
+      backend_only: false
+  select_permissions:
+  - role: counselor
+    permission:
+      columns:
+      - id
+      - created_at
+      - updated_at
+      - student_id
+      - statement
+      - attachment_url
+      - honor
+      - status
+      filter: {}
+  - role: EEsenior
+    permission:
+      columns:
+      - id
+      - created_at
+      - updated_at
+      - student_id
+      - statement
+      - attachment_url
+      - honor
+      - status
+      filter:
+        student_id:
+          _eq: X-Hasura-User-Id
+  - role: root
+    permission:
+      columns:
+      - attachment_url
+      - honor
+      - statement
+      - status
+      - student_id
+      - created_at
+      - updated_at
+      - id
+      filter: {}
+      allow_aggregations: true
+  - role: student
+    permission:
+      columns:
+      - id
+      - created_at
+      - updated_at
+      - student_id
+      - statement
+      - attachment_url
+      - honor
+      - status
+      filter:
+        student_id:
+          _eq: X-Hasura-User-Id
+  update_permissions:
+  - role: counselor
+    permission:
+      columns:
+      - status
+      filter: {}
+      check: {}
+  - role: EEsenior
+    permission:
+      columns:
+      - attachment_url
+      - honor
+      - statement
+      - status
+      - student_id
+      filter:
+        _and:
+        - student_id:
+            _eq: X-Hasura-User-Id
+        - updated_at:
+            _lt: "2020-10-05T15:59:59+00:00"
+      check:
+        _and:
+        - student_id:
+            _eq: X-Hasura-User-Id
+        - updated_at:
+            _lt: "2020-10-05T15:59:59+00:00"
+  - role: root
+    permission:
+      columns:
+      - attachment_url
+      - honor
+      - statement
+      - status
+      - student_id
+      - created_at
+      - updated_at
+      - id
+      filter: {}
+      check: {}
+  - role: student
+    permission:
+      columns:
+      - attachment_url
+      - honor
+      - statement
+      - status
+      - student_id
+      filter:
+        _and:
+        - student_id:
+            _eq: X-Hasura-User-Id
+        - updated_at:
+            _lt: "2020-10-05T15:59:59+00:00"
+      check:
+        _and:
+        - student_id:
+            _eq: X-Hasura-User-Id
+        - updated_at:
+            _lt: "2020-10-05T15:59:59+00:00"
+  delete_permissions:
+  - role: EEsenior
+    permission:
+      filter:
+        student_id:
+          _eq: X-Hasura-User-Id
+  - role: root
+    permission:
+      filter: {}
+  - role: student
+    permission:
+      filter:
+        student_id:
+          _eq: X-Hasura-User-Id
+- table:
+    schema: public
+    name: info_notice
+  insert_permissions:
+  - role: counselor
+    permission:
+      check: {}
+      columns:
+      - content
+      - created_at
+      - files
+      - id
+      - notice_type
+      - title
+      - updated_at
+      backend_only: false
+  - role: root
+    permission:
+      check: {}
+      columns:
+      - content
+      - created_at
+      - files
+      - id
+      - notice_type
+      - title
+      - updated_at
+      backend_only: false
+  select_permissions:
+  - role: counselor
+    permission:
+      columns:
+      - content
+      - created_at
+      - files
+      - id
+      - notice_type
+      - title
+      - updated_at
+      filter: {}
+  - role: EEsenior
+    permission:
+      columns:
+      - content
+      - created_at
+      - files
+      - id
+      - notice_type
+      - title
+      - updated_at
+      filter: {}
+  - role: root
+    permission:
+      columns:
+      - content
+      - created_at
+      - files
+      - id
+      - notice_type
+      - title
+      - updated_at
+      filter: {}
+  - role: student
+    permission:
+      columns:
+      - content
+      - created_at
+      - files
+      - id
+      - notice_type
+      - title
+      - updated_at
+      filter: {}
+  - role: teacher
+    permission:
+      columns:
+      - content
+      - created_at
+      - files
+      - id
+      - notice_type
+      - title
+      - updated_at
+      filter: {}
+  update_permissions:
+  - role: counselor
+    permission:
+      columns:
+      - content
+      - files
+      - id
+      - notice_type
+      - title
+      filter: {}
+      check: {}
+  - role: root
+    permission:
+      columns:
+      - content
+      - created_at
+      - files
+      - id
+      - notice_type
+      - title
+      - updated_at
+      filter: {}
+      check: {}
+  delete_permissions:
+  - role: counselor
+    permission:
+      filter: {}
+  - role: root
+    permission:
+      filter: {}
+- table:
+    schema: public
+    name: mentor_application
+  object_relationships:
+  - name: mentor
+    using:
+      foreign_key_constraint_on: mentor_id
+  - name: student
+    using:
+      foreign_key_constraint_on: student_id
+  insert_permissions:
+  - role: root
+    permission:
+      check: {}
+      columns:
+      - mentor_id
+      - statement
+      - status
+      - student_id
+      - created_at
+      - updated_at
+      - id
+      backend_only: false
+  - role: student
+    permission:
+      check:
+        student_id:
+          _eq: X-Hasura-User-Id
+      columns:
+      - mentor_id
+      - statement
+      - student_id
+      backend_only: false
+  select_permissions:
+  - role: counselor
+    permission:
+      columns:
+      - id
+      - created_at
+      - updated_at
+      - statement
+      - mentor_id
+      - student_id
+      - status
+      filter: {}
+      allow_aggregations: true
+  - role: root
+    permission:
+      columns:
+      - mentor_id
+      - statement
+      - status
+      - student_id
+      - created_at
+      - updated_at
+      - id
+      filter: {}
+  - role: student
+    permission:
+      columns:
+      - created_at
+      - id
+      - mentor_id
+      - statement
+      - status
+      - student_id
+      - updated_at
+      filter: {}
+      allow_aggregations: true
+  - role: teacher
+    permission:
+      columns:
+      - id
+      - created_at
+      - updated_at
+      - statement
+      - mentor_id
+      - student_id
+      - status
+      filter:
+        mentor_id:
+          _eq: X-Hasura-User-Id
+  update_permissions:
+  - role: root
+    permission:
+      columns:
+      - mentor_id
+      - statement
+      - status
+      - student_id
+      - created_at
+      - updated_at
+      - id
+      filter: {}
+      check: {}
+  - role: student
+    permission:
+      columns:
+      - statement
+      filter:
+        student_id:
+          _eq: X-Hasura-User-Id
+      check:
+        student_id:
+          _eq: X-Hasura-User-Id
+  - role: teacher
+    permission:
+      columns:
+      - status
+      filter:
+        mentor_id:
+          _eq: X-Hasura-User-Id
+      check:
+        mentor_id:
+          _eq: X-Hasura-User-Id
+  delete_permissions:
+  - role: root
+    permission:
+      filter: {}
+- table:
+    schema: public
+    name: mentor_available
+  insert_permissions:
+  - role: root
+    permission:
+      check: {}
+      columns:
+      - available
+      - mentor_id
+      - created_at
+      - updated_at
+      backend_only: false
+  - role: teacher
+    permission:
+      check:
+        mentor_id:
+          _eq: X-Hasura-User-Id
+      columns:
+      - available
+      - mentor_id
+      backend_only: false
+  select_permissions:
+  - role: counselor
+    permission:
+      columns:
+      - created_at
+      - updated_at
+      - mentor_id
+      - available
+      filter: {}
+  - role: root
+    permission:
+      columns:
+      - available
+      - mentor_id
+      - created_at
+      - updated_at
+      filter: {}
+  - role: student
+    permission:
+      columns:
+      - available
+      - created_at
+      - mentor_id
+      - updated_at
+      filter: {}
+  - role: teacher
+    permission:
+      columns:
+      - available
+      - mentor_id
+      - created_at
+      - updated_at
+      filter:
+        mentor_id:
+          _eq: X-Hasura-User-Id
+  update_permissions:
+  - role: root
+    permission:
+      columns:
+      - available
+      - mentor_id
+      - created_at
+      - updated_at
+      filter: {}
+      check: {}
+  - role: teacher
+    permission:
+      columns:
+      - available
+      filter:
+        mentor_id:
+          _eq: X-Hasura-User-Id
+      check:
+        mentor_id:
+          _eq: X-Hasura-User-Id
+  delete_permissions:
+  - role: root
+    permission:
+      filter: {}
+- table:
+    schema: public
+    name: mentor_info
+  object_relationships:
+  - name: user
+    using:
+      foreign_key_constraint_on: mentor_id
+  insert_permissions:
+  - role: counselor
+    permission:
+      check: {}
+      columns:
+      - mentor_id
+      - created_at
+      - updated_at
+      - achievement
+      - background
+      - field
+      - intro
+      backend_only: false
+  - role: root
+    permission:
+      check: {}
+      columns:
+      - mentor_id
+      - created_at
+      - updated_at
+      - achievement
+      - background
+      - field
+      - intro
+      backend_only: false
+  - role: teacher
+    permission:
+      check:
+        mentor_id:
+          _eq: X-Hasura-User-Id
+      columns:
+      - mentor_id
+      - intro
+      - background
+      - field
+      - achievement
+      - created_at
+      - updated_at
+      backend_only: false
+  select_permissions:
+  - role: counselor
+    permission:
+      columns:
+      - mentor_id
+      - intro
+      - background
+      - field
+      - achievement
+      - created_at
+      - updated_at
+      filter: {}
+      allow_aggregations: true
+  - role: root
+    permission:
+      columns:
+      - mentor_id
+      - intro
+      - background
+      - field
+      - achievement
+      - created_at
+      - updated_at
+      filter: {}
+      allow_aggregations: true
+  - role: student
+    permission:
+      columns:
+      - achievement
+      - background
+      - field
+      - intro
+      - mentor_id
+      filter: {}
+  - role: teacher
+    permission:
+      columns:
+      - mentor_id
+      - created_at
+      - updated_at
+      - achievement
+      - background
+      - field
+      - intro
+      filter:
+        mentor_id:
+          _eq: X-Hasura-User-Id
+  update_permissions:
+  - role: counselor
+    permission:
+      columns:
+      - mentor_id
+      - created_at
+      - updated_at
+      - achievement
+      - background
+      - field
+      - intro
+      filter: {}
+      check: {}
+  - role: root
+    permission:
+      columns:
+      - mentor_id
+      - created_at
+      - updated_at
+      - achievement
+      - background
+      - field
+      - intro
+      filter: {}
+      check: {}
+  - role: teacher
+    permission:
+      columns:
+      - achievement
+      - background
+      - created_at
+      - field
+      - intro
+      - updated_at
+      filter:
+        mentor_id:
+          _eq: X-Hasura-User-Id
+      check:
+        mentor_id:
+          _eq: X-Hasura-User-Id
+  delete_permissions:
+  - role: counselor
+    permission:
+      filter: {}
+  - role: root
+    permission:
+      filter: {}
+- table:
+    schema: public
+    name: mentor_message
+  object_relationships:
+  - name: from_user
+    using:
+      foreign_key_constraint_on: from_id
+  - name: to_user
+    using:
+      foreign_key_constraint_on: to_id
+  insert_permissions:
+  - role: student
+    permission:
+      check:
+        from_id:
+          _eq: X-Hasura-User-Id
+      columns:
+      - from_id
+      - payload
+      - to_id
+      backend_only: false
+  - role: teacher
+    permission:
+      check:
+        from_id:
+          _eq: X-Hasura-User-Id
+      columns:
+      - from_id
+      - payload
+      - to_id
+      backend_only: false
+  select_permissions:
+  - role: student
+    permission:
+      columns:
+      - created_at
+      - from_id
+      - id
+      - payload
+      - to_id
+      - updated_at
+      filter:
+        _or:
+        - from_id:
+            _eq: X-Hasura-User-Id
+        - to_id:
+            _eq: X-Hasura-User-Id
+  - role: teacher
+    permission:
+      columns:
+      - created_at
+      - from_id
+      - id
+      - payload
+      - to_id
+      - updated_at
+      filter:
+        _or:
+        - from_id:
+            _eq: X-Hasura-User-Id
+        - to_id:
+            _eq: X-Hasura-User-Id
+- table:
+    schema: public
+    name: postgraduate_application
+  object_relationships:
+  - name: mentor
+    using:
+      foreign_key_constraint_on: mentor_info_id
+  - name: user
+    using:
+      foreign_key_constraint_on: user_id
+  insert_permissions:
+  - role: EEsenior
+    permission:
+      check:
+        user_id:
+          _eq: X-Hasura-User-Id
+      columns:
+      - created_at
+      - mentor_info_id
+      - status
+      - updated_at
+      - user_id
+      - verified
+      backend_only: false
+  - role: root
+    permission:
+      check: {}
+      columns:
+      - created_at
+      - mentor_info_id
+      - status
+      - updated_at
+      - user_id
+      - verified
+      backend_only: false
+  select_permissions:
+  - role: counselor
+    permission:
+      columns:
+      - user_id
+      - mentor_info_id
+      - status
+      - created_at
+      - updated_at
+      - verified
+      filter: {}
+      allow_aggregations: true
+  - role: EEsenior
+    permission:
+      columns:
+      - created_at
+      - mentor_info_id
+      - status
+      - updated_at
+      - user_id
+      - verified
+      filter: {}
+      allow_aggregations: true
+  - role: root
+    permission:
+      columns:
+      - user_id
+      - mentor_info_id
+      - status
+      - created_at
+      - updated_at
+      - verified
+      filter: {}
+      allow_aggregations: true
+  - role: teacher
+    permission:
+      columns:
+      - verified
+      - mentor_info_id
+      - user_id
+      - created_at
+      - updated_at
+      - status
+      filter: {}
+      allow_aggregations: true
+  update_permissions:
+  - role: counselor
+    permission:
+      columns:
+      - verified
+      - mentor_info_id
+      - user_id
+      - created_at
+      - updated_at
+      - status
+      filter: {}
+      check: null
+  - role: EEsenior
+    permission:
+      columns:
+      - verified
+      - mentor_info_id
+      - user_id
+      - created_at
+      - updated_at
+      - status
+      filter:
+        user_id:
+          _eq: X-Hasura-User-Id
+      check: null
+  - role: root
+    permission:
+      columns:
+      - created_at
+      - mentor_info_id
+      - status
+      - updated_at
+      - user_id
+      - verified
+      filter: {}
+      check: {}
+  delete_permissions:
+  - role: counselor
+    permission:
+      filter: {}
+  - role: EEsenior
+    permission:
+      filter:
+        user_id:
+          _eq: X-Hasura-User-Id
+  - role: root
+    permission:
+      filter: {}
+- table:
+    schema: public
+    name: postgraduate_application_history
+  object_relationships:
+  - name: mentor
+    using:
+      foreign_key_constraint_on: mentor_info_id
+  - name: user
+    using:
+      foreign_key_constraint_on: user_id
+  insert_permissions:
+  - role: counselor
+    permission:
+      check: {}
+      columns:
+      - mentor_info_id
+      - user_id
+      - created_at
+      - updated_at
+      - status
+      backend_only: false
+  - role: EEsenior
+    permission:
+      check:
+        user_id:
+          _eq: X-Hasura-User-Id
+      columns:
+      - user_id
+      - mentor_info_id
+      - created_at
+      - updated_at
+      - status
+      backend_only: false
+  - role: root
+    permission:
+      check: {}
+      columns:
+      - mentor_info_id
+      - user_id
+      - created_at
+      - updated_at
+      - status
+      backend_only: false
+  - role: teacher
+    permission:
+      check: {}
+      columns:
+      - user_id
+      - mentor_info_id
+      - created_at
+      - updated_at
+      - status
+      backend_only: false
+  select_permissions:
+  - role: counselor
+    permission:
+      columns:
+      - mentor_info_id
+      - user_id
+      - created_at
+      - updated_at
+      - status
+      filter: {}
+      allow_aggregations: true
+  - role: EEsenior
+    permission:
+      columns:
+      - mentor_info_id
+      - user_id
+      - created_at
+      - updated_at
+      - status
+      filter:
+        user_id:
+          _eq: X-Hasura-User-Id
+  - role: root
+    permission:
+      columns:
+      - mentor_info_id
+      - user_id
+      - created_at
+      - updated_at
+      - status
+      filter: {}
+      allow_aggregations: true
+  - role: teacher
+    permission:
+      columns:
+      - mentor_info_id
+      - user_id
+      - created_at
+      - updated_at
+      - status
+      filter: {}
+      allow_aggregations: true
+  update_permissions:
+  - role: counselor
+    permission:
+      columns:
+      - mentor_info_id
+      - user_id
+      - created_at
+      - updated_at
+      - status
+      filter: {}
+      check: null
+  - role: EEsenior
+    permission:
+      columns:
+      - mentor_info_id
+      - user_id
+      - created_at
+      - updated_at
+      - status
+      filter:
+        user_id:
+          _eq: X-Hasura-User-Id
+      check:
+        user_id:
+          _eq: X-Hasura-User-Id
+  - role: root
+    permission:
+      columns:
+      - mentor_info_id
+      - user_id
+      - created_at
+      - updated_at
+      - status
+      filter: {}
+      check: null
+  - role: teacher
+    permission:
+      columns:
+      - mentor_info_id
+      - user_id
+      - created_at
+      - updated_at
+      - status
+      filter: {}
+      check: null
+  delete_permissions:
+  - role: counselor
+    permission:
+      filter: {}
+  - role: root
+    permission:
+      filter: {}
+- table:
+    schema: public
+    name: postgraduate_mentor_info
+  object_relationships:
+  - name: user
+    using:
+      foreign_key_constraint_on: user_id
+  array_relationships:
+  - name: applications
+    using:
+      foreign_key_constraint_on:
+        column: mentor_info_id
+        table:
+          schema: public
+          name: postgraduate_application
+  insert_permissions:
+  - role: counselor
+    permission:
+      check: {}
+      columns:
+      - id
+      - created_at
+      - updated_at
+      - mentor
+      - field
+      - phd_quota
+      - contact
+      - home_page
+      - alternate_contact
+      - detail_info
+      - user_id
+      - verified
+      backend_only: false
+  - role: root
+    permission:
+      check: {}
+      columns:
+      - id
+      - created_at
+      - updated_at
+      - mentor
+      - field
+      - phd_quota
+      - contact
+      - home_page
+      - alternate_contact
+      - detail_info
+      - user_id
+      - verified
+      backend_only: false
+  - role: teacher
+    permission:
+      check: {}
+      columns:
+      - alternate_contact
+      - contact
+      - created_at
+      - detail_info
+      - field
+      - home_page
+      - id
+      - mentor
+      - phd_quota
+      - updated_at
+      - user_id
+      - verified
+      backend_only: false
+  select_permissions:
+  - role: counselor
+    permission:
+      columns:
+      - id
+      - created_at
+      - updated_at
+      - mentor
+      - field
+      - phd_quota
+      - contact
+      - home_page
+      - alternate_contact
+      - detail_info
+      - user_id
+      - verified
+      filter: {}
+      allow_aggregations: true
+  - role: EEsenior
+    permission:
+      columns:
+      - id
+      - created_at
+      - updated_at
+      - mentor
+      - field
+      - phd_quota
+      - contact
+      - home_page
+      - alternate_contact
+      - detail_info
+      - user_id
+      - verified
+      filter: {}
+      allow_aggregations: true
+  - role: root
+    permission:
+      columns:
+      - verified
+      - id
+      - phd_quota
+      - alternate_contact
+      - contact
+      - detail_info
+      - field
+      - home_page
+      - mentor
+      - created_at
+      - updated_at
+      - user_id
+      filter: {}
+      allow_aggregations: true
+  - role: teacher
+    permission:
+      columns:
+      - verified
+      - id
+      - phd_quota
+      - alternate_contact
+      - contact
+      - detail_info
+      - field
+      - home_page
+      - mentor
+      - created_at
+      - updated_at
+      - user_id
+      filter: {}
+      allow_aggregations: true
+  update_permissions:
+  - role: counselor
+    permission:
+      columns:
+      - verified
+      - id
+      - phd_quota
+      - alternate_contact
+      - contact
+      - detail_info
+      - field
+      - home_page
+      - mentor
+      - created_at
+      - updated_at
+      - user_id
+      filter: {}
+      check: {}
+  - role: root
+    permission:
+      columns:
+      - verified
+      - id
+      - phd_quota
+      - alternate_contact
+      - contact
+      - detail_info
+      - field
+      - home_page
+      - mentor
+      - created_at
+      - updated_at
+      - user_id
+      filter: {}
+      check: {}
+  - role: teacher
+    permission:
+      columns:
+      - verified
+      - id
+      - phd_quota
+      - alternate_contact
+      - contact
+      - detail_info
+      - field
+      - home_page
+      - mentor
+      - created_at
+      - updated_at
+      - user_id
+      filter: {}
+      check: {}
+  delete_permissions:
+  - role: counselor
+    permission:
+      filter: {}
+  - role: root
+    permission:
+      filter: {}
+  - role: teacher
+    permission:
+      filter:
+        user_id:
+          _eq: X-Hasura-User-Id
+- table:
+    schema: public
+    name: postgraduate_mentor_info_pending
+  insert_permissions:
+  - role: counselor
+    permission:
+      check: {}
+      columns:
+      - id
+      - phd_quota
+      - alternate_contact
+      - contact
+      - detail_info
+      - home_page
+      - lab
+      - mentor
+      - user_id
+      - created_at
+      - updated_at
+      backend_only: false
+  - role: root
+    permission:
+      check: {}
+      columns:
+      - id
+      - phd_quota
+      - alternate_contact
+      - contact
+      - detail_info
+      - home_page
+      - lab
+      - mentor
+      - user_id
+      - created_at
+      - updated_at
+      backend_only: false
+  - role: teacher
+    permission:
+      check: {}
+      columns:
+      - id
+      - created_at
+      - updated_at
+      - mentor
+      - lab
+      - phd_quota
+      - contact
+      - home_page
+      - alternate_contact
+      - detail_info
+      - user_id
+      backend_only: false
+  select_permissions:
+  - role: counselor
+    permission:
+      columns:
+      - id
+      - phd_quota
+      - alternate_contact
+      - contact
+      - detail_info
+      - home_page
+      - lab
+      - mentor
+      - user_id
+      - created_at
+      - updated_at
+      filter: {}
+      allow_aggregations: true
+  - role: root
+    permission:
+      columns:
+      - id
+      - phd_quota
+      - alternate_contact
+      - contact
+      - detail_info
+      - home_page
+      - lab
+      - mentor
+      - user_id
+      - created_at
+      - updated_at
+      filter: {}
+      allow_aggregations: true
+  - role: teacher
+    permission:
+      columns:
+      - id
+      - phd_quota
+      - alternate_contact
+      - contact
+      - detail_info
+      - home_page
+      - lab
+      - mentor
+      - user_id
+      - created_at
+      - updated_at
+      filter: {}
+      allow_aggregations: true
+  update_permissions:
+  - role: counselor
+    permission:
+      columns:
+      - id
+      - phd_quota
+      - alternate_contact
+      - contact
+      - detail_info
+      - home_page
+      - lab
+      - mentor
+      - user_id
+      - created_at
+      - updated_at
+      filter: {}
+      check: {}
+  - role: root
+    permission:
+      columns:
+      - id
+      - phd_quota
+      - alternate_contact
+      - contact
+      - detail_info
+      - home_page
+      - lab
+      - mentor
+      - user_id
+      - created_at
+      - updated_at
+      filter: {}
+      check: null
+  - role: teacher
+    permission:
+      columns:
+      - id
+      - phd_quota
+      - alternate_contact
+      - contact
+      - detail_info
+      - home_page
+      - lab
+      - mentor
+      - user_id
+      - created_at
+      - updated_at
+      filter: {}
+      check: {}
+  delete_permissions:
+  - role: counselor
+    permission:
+      filter: {}
+  - role: root
+    permission:
+      filter: {}
+  - role: teacher
+    permission:
+      filter: {}
+- table:
+    schema: public
+    name: scholarship_application
+  object_relationships:
+  - name: student
+    using:
+      foreign_key_constraint_on: student_id
+  insert_permissions:
+  - role: counselor
+    permission:
+      check: {}
+      columns:
+      - id
+      - created_at
+      - updated_at
+      - scholarship
+      - amount
+      - status
+      - student_id
+      - thank_letter
+      - code
+      - honor
+      - form_url
+      backend_only: false
+  - role: root
+    permission:
+      check: {}
+      columns:
+      - id
+      - created_at
+      - updated_at
+      - scholarship
+      - amount
+      - status
+      - student_id
+      - thank_letter
+      - code
+      - honor
+      - form_url
+      backend_only: false
+  select_permissions:
+  - role: counselor
+    permission:
+      columns:
+      - amount
+      - code
+      - form_url
+      - honor
+      - scholarship
+      - status
+      - student_id
+      - thank_letter
+      - created_at
+      - updated_at
+      - id
+      filter: {}
+  - role: EEsenior
+    permission:
+      columns:
+      - id
+      - created_at
+      - updated_at
+      - scholarship
+      - amount
+      - status
+      - student_id
+      - thank_letter
+      - code
+      - honor
+      - form_url
+      filter:
+        student_id:
+          _eq: X-Hasura-User-Id
+  - role: root
+    permission:
+      columns:
+      - amount
+      - code
+      - form_url
+      - honor
+      - scholarship
+      - status
+      - student_id
+      - thank_letter
+      - created_at
+      - updated_at
+      - id
+      filter: {}
+      allow_aggregations: true
+  - role: student
+    permission:
+      columns:
+      - id
+      - created_at
+      - updated_at
+      - scholarship
+      - amount
+      - status
+      - student_id
+      - thank_letter
+      - code
+      - honor
+      - form_url
+      filter:
+        student_id:
+          _eq: X-Hasura-User-Id
+  update_permissions:
+  - role: EEsenior
+    permission:
+      columns:
+      - form_url
+      - thank_letter
+      filter:
+        student_id:
+          _eq: X-Hasura-User-Id
+      check:
+        student_id:
+          _eq: X-Hasura-User-Id
+  - role: root
+    permission:
+      columns:
+      - amount
+      - code
+      - form_url
+      - honor
+      - scholarship
+      - status
+      - student_id
+      - thank_letter
+      - created_at
+      - updated_at
+      - id
+      filter: {}
+      check: {}
+  - role: student
+    permission:
+      columns:
+      - form_url
+      - thank_letter
+      filter:
+        student_id:
+          _eq: X-Hasura-User-Id
+      check:
+        student_id:
+          _eq: X-Hasura-User-Id
+  delete_permissions:
+  - role: counselor
+    permission:
+      filter: {}
+  - role: root
+    permission:
+      filter: {}
+- table:
+    schema: public
+    name: tag
+  array_relationships:
+  - name: tag_articles
+    using:
+      foreign_key_constraint_on:
+        column: tag_id
+        table:
+          schema: public
+          name: article_tag
+  select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+      - tag_name
+      filter: {}
+      allow_aggregations: true
+  - role: counselor
+    permission:
+      columns:
+      - tag_name
+      filter: {}
+      allow_aggregations: true
+  - role: root
+    permission:
+      columns:
+      - tag_name
+      filter: {}
+      allow_aggregations: true
+  - role: student
+    permission:
+      columns:
+      - tag_name
+      filter: {}
+      allow_aggregations: true
+  - role: teacher
+    permission:
+      columns:
+      - tag_name
+      filter: {}
+      allow_aggregations: true
+  - role: user
+    permission:
+      columns:
+      - tag_name
+      filter: {}
+      allow_aggregations: true
+- table:
+    schema: public
+    name: team
+  object_relationships:
+  - name: user
+    using:
+      foreign_key_constraint_on: leader_id
+- table:
+    schema: public
+    name: team_member
+  object_relationships:
+  - name: user
+    using:
+      foreign_key_constraint_on: user_id
+  array_relationships:
+  - name: team_leader_to_team_members
+    using:
+      manual_configuration:
+        remote_table:
+          schema: public
+          name: thuai
+        column_mapping:
+          user_id: team_leader
+  - name: team_member
+    using:
+      manual_configuration:
+        remote_table:
+          schema: public
+          name: thuai
+        column_mapping:
+          team_id: team_id
+- table:
+    schema: public
+    name: thuai
+  object_relationships:
+  - name: user
+    using:
+      foreign_key_constraint_on: team_leader
+  array_relationships:
+  - name: team_members
+    using:
+      manual_configuration:
+        remote_table:
+          schema: public
+          name: team_member
+        column_mapping:
+          team_id: team_id
+  insert_permissions:
+  - role: student
+    permission:
+      check: {}
+      columns:
+      - team_id
+      - team_name
+      - team_sum
+      - team_leader
+      - created_at
+      - invited_code
+      backend_only: false
+  select_permissions:
+  - role: student
+    permission:
+      columns:
+      - invited_code
+      - team_leader
+      - team_name
+      - team_sum
+      - created_at
+      - team_id
+      filter: {}
+- table:
+    schema: public
+    name: user
+  object_relationships:
+  - name: mentor_available
+    using:
+      manual_configuration:
+        remote_table:
+          schema: public
+          name: mentor_available
+        column_mapping:
+          _id: mentor_id
+  array_relationships:
+  - name: articles
+    using:
+      foreign_key_constraint_on:
+        column: authorId
+        table:
+          schema: public
+          name: article
+  - name: comments
+    using:
+      foreign_key_constraint_on:
+        column: user_id
+        table:
+          schema: public
+          name: comment
+  - name: like_articles
+    using:
+      foreign_key_constraint_on:
+        column: user_id
+        table:
+          schema: public
+          name: article_liker
+  - name: mentor_applications_mentor
+    using:
+      foreign_key_constraint_on:
+        column: mentor_id
+        table:
+          schema: public
+          name: mentor_application
+  - name: mentor_applications_student
+    using:
+      foreign_key_constraint_on:
+        column: student_id
+        table:
+          schema: public
+          name: mentor_application
+  - name: team_as_leader
+    using:
+      manual_configuration:
+        remote_table:
+          schema: public
+          name: thuai
+        column_mapping:
+          _id: team_leader
+  - name: team_as_member
+    using:
+      foreign_key_constraint_on:
+        column: user_id
+        table:
+          schema: public
+          name: team_member
+  insert_permissions:
+  - role: root
+    permission:
+      check: {}
+      columns:
+      - _id
+      - class
+      - created_at
+      - department
+      - email
+      - id
+      - name
+      - phone
+      - updated_at
+      - username
+      backend_only: false
+  select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+      - username
+      filter: {}
+      allow_aggregations: true
+  - role: counselor
+    permission:
+      columns:
+      - created_at
+      - updated_at
+      - username
+      - name
+      - department
+      - class
+      - phone
+      - id
+      - _id
+      - email
+      filter: {}
+      allow_aggregations: true
+  - role: EEsenior
+    permission:
+      columns:
+      - _id
+      - class
+      - created_at
+      - department
+      - email
+      - id
+      - name
+      - phone
+      - updated_at
+      - username
+      filter: {}
+      allow_aggregations: true
+  - role: root
+    permission:
+      columns:
+      - _id
+      - class
+      - created_at
+      - department
+      - email
+      - id
+      - name
+      - phone
+      - updated_at
+      - username
+      filter: {}
+  - role: student
+    permission:
+      columns:
+      - _id
+      - class
+      - created_at
+      - department
+      - email
+      - id
+      - name
+      - phone
+      - updated_at
+      - username
+      filter: {}
+      allow_aggregations: true
+  - role: teacher
+    permission:
+      columns:
+      - _id
+      - class
+      - created_at
+      - department
+      - email
+      - id
+      - name
+      - phone
+      - updated_at
+      - username
+      filter: {}
+  - role: user
+    permission:
+      columns:
+      - _id
+      - class
+      - created_at
+      - department
+      - email
+      - id
+      - name
+      - phone
+      - updated_at
+      - username
+      filter:
+        _id:
+          _eq: X-Hasura-User-Id
+  update_permissions:
+  - role: counselor
+    permission:
+      columns:
+      - class
+      - department
+      - email
+      - id
+      - name
+      - phone
+      - username
+      filter:
+        _id:
+          _eq: X-Hasura-User-Id
+      check:
+        _id:
+          _eq: X-Hasura-User-Id
+  - role: EEsenior
+    permission:
+      columns:
+      - class
+      - department
+      - email
+      - id
+      - name
+      - phone
+      - updated_at
+      - username
+      filter:
+        _id:
+          _eq: X-Hasura-User-Id
+      check: null
+  - role: root
+    permission:
+      columns:
+      - _id
+      - class
+      - created_at
+      - department
+      - email
+      - id
+      - name
+      - phone
+      - updated_at
+      - username
+      filter: {}
+      check: {}
+  - role: student
+    permission:
+      columns:
+      - class
+      - department
+      - email
+      - id
+      - name
+      - phone
+      - updated_at
+      - username
+      filter:
+        _id:
+          _eq: X-Hasura-User-Id
+      check: null
+  - role: teacher
+    permission:
+      columns:
+      - class
+      - department
+      - email
+      - id
+      - name
+      - phone
+      - username
+      filter:
+        _id:
+          _eq: X-Hasura-User-Id
+      check: null
+  - role: user
+    permission:
+      columns:
+      - class
+      - department
+      - email
+      - id
+      - name
+      - phone
+      - username
+      filter:
+        _id:
+          _eq: X-Hasura-User-Id
+      check:
+        _id:
+          _eq: X-Hasura-User-Id
+  delete_permissions:
+  - role: root
+    permission:
+      filter: {}

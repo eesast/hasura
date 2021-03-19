@@ -1,0 +1,15 @@
+type Query {
+  user_by_role (
+    role: String!
+  ): [user_by_role_user!]!
+}
+
+
+
+
+type user_by_role_user {
+  _id : String!
+  name : String!
+  department : String!
+}
+

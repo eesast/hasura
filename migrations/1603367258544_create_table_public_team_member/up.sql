@@ -1,0 +1,1 @@
+CREATE TABLE "public"."team_member"("team_id" uuid NOT NULL, "user_id" text NOT NULL, PRIMARY KEY ("team_id","user_id") , FOREIGN KEY ("team_id") REFERENCES "public"."team"("id") ON UPDATE restrict ON DELETE restrict, FOREIGN KEY ("user_id") REFERENCES "public"."user"("_id") ON UPDATE restrict ON DELETE restrict);
