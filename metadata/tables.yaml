@@ -2407,6 +2407,7 @@
     permission:
       columns:
       - invited_code
+      - score
       - team_id
       - team_leader
       - team_name
@@ -2426,12 +2427,13 @@
   - role: student
     permission:
       columns:
+      - created_at
       - invited_code
+      - score
+      - team_id
       - team_leader
       - team_name
       - team_sum
-      - created_at
-      - team_id
       filter: {}
   update_permissions:
   - role: EEsenior
