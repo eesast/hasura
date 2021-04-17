@@ -1,0 +1,2 @@
+ALTER TABLE ONLY "public"."thuai" ALTER COLUMN "score" SET DEFAULT 0;
+ALTER TABLE "public"."thuai" ALTER COLUMN "score" DROP NOT NULL;
