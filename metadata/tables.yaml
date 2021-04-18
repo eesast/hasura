@@ -2407,6 +2407,26 @@
     permission:
       columns:
       - invited_code
+      - team_id
+      - team_leader
+      - team_name
+      - team_sum
+      filter: {}
+  - role: root
+    permission:
+      columns:
+      - score
+      - invited_code
+      - team_leader
+      - team_name
+      - team_sum
+      - created_at
+      - team_id
+      filter: {}
+  - role: student
+    permission:
+      columns:
+      - invited_code
       - score
       - team_id
       - team_leader
