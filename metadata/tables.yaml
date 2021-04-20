@@ -2367,6 +2367,20 @@
           name: team_member
         column_mapping:
           team_id: team_id
+  - name: thuai_codes
+    using:
+      foreign_key_constraint_on:
+        column: team_id
+        table:
+          schema: public
+          name: thuai_code
+  - name: thuai_room_teams
+    using:
+      foreign_key_constraint_on:
+        column: thuai_team_id
+        table:
+          schema: public
+          name: thuai_room_team
   insert_permissions:
   - role: EEsenior
     permission:
@@ -2430,6 +2444,7 @@
       - created_at
       - invited_code
       - score
+      - status
       - team_id
       - team_leader
       - team_name
@@ -2577,6 +2592,66 @@
   - name: thuai_team
     using:
       foreign_key_constraint_on: thuai_team_id
+  insert_permissions:
+  - role: EEsenior
+    permission:
+      check: {}
+      columns:
+      - room_id
+      - thuai_team_id
+      backend_only: false
+  - role: root
+    permission:
+      check: {}
+      columns:
+      - room_id
+      - thuai_team_id
+      backend_only: false
+  - role: student
+    permission:
+      check: {}
+      columns:
+      - room_id
+      - thuai_team_id
+      backend_only: false
+  select_permissions:
+  - role: EEsenior
+    permission:
+      columns:
+      - room_id
+      - thuai_team_id
+      filter: {}
+  - role: root
+    permission:
+      columns:
+      - room_id
+      - thuai_team_id
+      filter: {}
+  - role: student
+    permission:
+      columns:
+      - room_id
+      - thuai_team_id
+      filter: {}
+  update_permissions:
+  - role: root
+    permission:
+      columns:
+      - room_id
+      - thuai_team_id
+      filter: {}
+      check: null
+  - role: student
+    permission:
+      columns:
+      - room_id
+      - thuai_team_id
+      filter: {}
+      check: null
+  delete_permissions:
+  - role: root
+    permission:
+      filter: {}
 - table:
     schema: public
     name: user
