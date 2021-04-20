@@ -2292,8 +2292,6 @@
           name: thuai
         column_mapping:
           team_id: team_id
-<<<<<<< HEAD
-=======
   insert_permissions:
   - role: EEsenior
     permission:
@@ -2353,7 +2351,6 @@
   - role: student
     permission:
       filter: {}
->>>>>>> 9ba01456bfd1c5cf29db61d1f7743c213b2a2197
 - table:
     schema: public
     name: thuai
@@ -2410,6 +2407,7 @@
     permission:
       columns:
       - invited_code
+      - score
       - team_id
       - team_leader
       - team_name
@@ -2429,15 +2427,14 @@
   - role: student
     permission:
       columns:
+      - created_at
       - invited_code
+      - score
+      - team_id
       - team_leader
       - team_name
       - team_sum
-      - created_at
-      - team_id
       filter: {}
-<<<<<<< HEAD
-=======
   update_permissions:
   - role: EEsenior
     permission:
@@ -2475,7 +2472,6 @@
   - role: student
     permission:
       filter: {}
->>>>>>> 9ba01456bfd1c5cf29db61d1f7743c213b2a2197
 - table:
     schema: public
     name: thuai_code
@@ -2497,6 +2493,80 @@
         table:
           schema: public
           name: thuai_room_team
+  insert_permissions:
+  - role: EEsenior
+    permission:
+      check: {}
+      columns:
+      - status
+      - show_id
+      - result
+      - created_at
+      - room_id
+      backend_only: false
+  - role: root
+    permission:
+      check: {}
+      columns:
+      - status
+      - show_id
+      - result
+      - created_at
+      - room_id
+      backend_only: false
+  - role: student
+    permission:
+      check: {}
+      columns:
+      - created_at
+      - result
+      - room_id
+      - show_id
+      - status
+      backend_only: false
+  select_permissions:
+  - role: EEsenior
+    permission:
+      columns:
+      - status
+      - show_id
+      - result
+      - created_at
+      - room_id
+      filter: {}
+  - role: root
+    permission:
+      columns:
+      - status
+      - show_id
+      - result
+      - created_at
+      - room_id
+      filter: {}
+  - role: student
+    permission:
+      columns:
+      - created_at
+      - result
+      - room_id
+      - show_id
+      - status
+      filter: {}
+  update_permissions:
+  - role: root
+    permission:
+      columns:
+      - status
+      - show_id
+      - result
+      - created_at
+      - room_id
+      filter: {}
+      check: {}
+  delete_permissions:
+  - role: root
+    permission:
+      filter: {}
 - table:
     schema: public
     name: thuai_room_team
@@ -2557,11 +2627,6 @@
           name: mentor_application
   - name: mentor_info
     using:
-<<<<<<< HEAD
-      manual_configuration:
-        remote_table:
-          schema: public
-=======
       foreign_key_constraint_on:
         column: mentor_id
         table:
@@ -2572,7 +2637,6 @@
       manual_configuration:
         remote_table:
           schema: public
->>>>>>> 9ba01456bfd1c5cf29db61d1f7743c213b2a2197
           name: thuai
         column_mapping:
           _id: team_leader
