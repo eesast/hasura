@@ -2407,6 +2407,7 @@
     permission:
       columns:
       - invited_code
+      - score
       - team_id
       - team_leader
       - team_name
@@ -2426,12 +2427,13 @@
   - role: student
     permission:
       columns:
+      - created_at
       - invited_code
+      - score
+      - team_id
       - team_leader
       - team_name
       - team_sum
-      - created_at
-      - team_id
       filter: {}
   update_permissions:
   - role: EEsenior
@@ -2473,6 +2475,44 @@
 - table:
     schema: public
     name: thuai_code
+  insert_permissions:
+  - role: student
+    permission:
+      check: {}
+      columns:
+      - team_id
+      - code_1
+      - code_2
+      - code_3
+      - code_4
+      - created_at
+      - updated_at
+      backend_only: false
+  select_permissions:
+  - role: student
+    permission:
+      columns:
+      - code_1
+      - code_2
+      - code_3
+      - code_4
+      - created_at
+      - updated_at
+      - team_id
+      filter: {}
+  update_permissions:
+  - role: student
+    permission:
+      columns:
+      - code_1
+      - code_2
+      - code_3
+      - code_4
+      - created_at
+      - updated_at
+      - team_id
+      filter: {}
+      check: {}
 - table:
     schema: public
     name: thuai_manager
@@ -2491,6 +2531,10 @@
         table:
           schema: public
           name: thuai_room_team
+  delete_permissions:
+  - role: root
+    permission:
+      filter: {}
 - table:
     schema: public
     name: thuai_room_team
@@ -2501,6 +2545,59 @@
   - name: thuai_team
     using:
       foreign_key_constraint_on: thuai_team_id
+  insert_permissions:
+  - role: EEsenior
+    permission:
+      check: {}
+      columns:
+      - room_id
+      - thuai_team_id
+      backend_only: false
+  - role: root
+    permission:
+      check: {}
+      columns:
+      - room_id
+      - thuai_team_id
+      backend_only: false
+  - role: student
+    permission:
+      check: {}
+      columns:
+      - room_id
+      - thuai_team_id
+      backend_only: false
+  select_permissions:
+  - role: EEsenior
+    permission:
+      columns:
+      - room_id
+      - thuai_team_id
+      filter: {}
+  - role: root
+    permission:
+      columns:
+      - room_id
+      - thuai_team_id
+      filter: {}
+  - role: student
+    permission:
+      columns:
+      - room_id
+      - thuai_team_id
+      filter: {}
+  update_permissions:
+  - role: root
+    permission:
+      columns:
+      - room_id
+      - thuai_team_id
+      filter: {}
+      check: {}
+  delete_permissions:
+  - role: root
+    permission:
+      filter: {}
 - table:
     schema: public
     name: user
