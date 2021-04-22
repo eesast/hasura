@@ -2476,6 +2476,30 @@
     schema: public
     name: thuai_code
   insert_permissions:
+  - role: EEsenior
+    permission:
+      check: {}
+      columns:
+      - code_1
+      - code_2
+      - code_3
+      - code_4
+      - created_at
+      - updated_at
+      - team_id
+      backend_only: false
+  - role: root
+    permission:
+      check: {}
+      columns:
+      - team_id
+      - code_1
+      - code_2
+      - code_3
+      - code_4
+      - created_at
+      - updated_at
+      backend_only: false
   - role: student
     permission:
       check: {}
@@ -2489,6 +2513,28 @@
       - updated_at
       backend_only: false
   select_permissions:
+  - role: EEsenior
+    permission:
+      columns:
+      - code_1
+      - code_2
+      - code_3
+      - code_4
+      - created_at
+      - updated_at
+      - team_id
+      filter: {}
+  - role: root
+    permission:
+      columns:
+      - team_id
+      - code_1
+      - code_2
+      - code_3
+      - code_4
+      - created_at
+      - updated_at
+      filter: {}
   - role: student
     permission:
       columns:
@@ -2501,6 +2547,30 @@
       - team_id
       filter: {}
   update_permissions:
+  - role: EEsenior
+    permission:
+      columns:
+      - code_1
+      - code_2
+      - code_3
+      - code_4
+      - created_at
+      - updated_at
+      - team_id
+      filter: {}
+      check: {}
+  - role: root
+    permission:
+      columns:
+      - code_1
+      - code_2
+      - code_3
+      - code_4
+      - created_at
+      - updated_at
+      - team_id
+      filter: {}
+      check: {}
   - role: student
     permission:
       columns:
@@ -2513,6 +2583,10 @@
       - team_id
       filter: {}
       check: {}
+  delete_permissions:
+  - role: root
+    permission:
+      filter: {}
 - table:
     schema: public
     name: thuai_manager
@@ -2531,6 +2605,27 @@
         table:
           schema: public
           name: thuai_room_team
+  insert_permissions:
+  - role: student
+    permission:
+      check: {}
+      columns:
+      - status
+      - show_id
+      - result
+      - created_at
+      - room_id
+      backend_only: false
+  select_permissions:
+  - role: student
+    permission:
+      columns:
+      - room_id
+      - status
+      - result
+      - created_at
+      - show_id
+      filter: {}
   delete_permissions:
   - role: root
     permission:
