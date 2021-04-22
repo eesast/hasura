@@ -2606,6 +2606,26 @@
           schema: public
           name: thuai_room_team
   insert_permissions:
+  - role: EEsenior
+    permission:
+      check: {}
+      columns:
+      - status
+      - show_id
+      - result
+      - created_at
+      - room_id
+      backend_only: false
+  - role: root
+    permission:
+      check: {}
+      columns:
+      - status
+      - show_id
+      - result
+      - created_at
+      - room_id
+      backend_only: false
   - role: student
     permission:
       check: {}
@@ -2617,6 +2637,15 @@
       - room_id
       backend_only: false
   select_permissions:
+  - role: root
+    permission:
+      columns:
+      - status
+      - show_id
+      - result
+      - created_at
+      - room_id
+      filter: {}
   - role: student
     permission:
       columns:
@@ -2626,6 +2655,17 @@
       - created_at
       - show_id
       filter: {}
+  update_permissions:
+  - role: root
+    permission:
+      columns:
+      - room_id
+      - status
+      - result
+      - created_at
+      - show_id
+      filter: {}
+      check: {}
   delete_permissions:
   - role: root
     permission:
