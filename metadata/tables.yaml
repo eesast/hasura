@@ -2420,8 +2420,10 @@
   - role: EEsenior
     permission:
       columns:
+      - created_at
       - invited_code
       - score
+      - status
       - team_id
       - team_leader
       - team_name
@@ -2430,13 +2432,14 @@
   - role: root
     permission:
       columns:
-      - score
+      - created_at
       - invited_code
+      - score
+      - status
+      - team_id
       - team_leader
       - team_name
       - team_sum
-      - created_at
-      - team_id
       filter: {}
   - role: student
     permission:
@@ -2490,6 +2493,10 @@
 - table:
     schema: public
     name: thuai_code
+  object_relationships:
+  - name: thuai_team
+    using:
+      foreign_key_constraint_on: team_id
   insert_permissions:
   - role: EEsenior
     permission:
@@ -2645,11 +2652,11 @@
     permission:
       check: {}
       columns:
-      - created_at
-      - result
-      - room_id
-      - show_id
       - status
+      - show_id
+      - result
+      - created_at
+      - room_id
       backend_only: false
   select_permissions:
   - role: EEsenior
@@ -2752,14 +2759,7 @@
       - room_id
       - thuai_team_id
       filter: {}
-      check: null
-  - role: student
-    permission:
-      columns:
-      - room_id
-      - thuai_team_id
-      filter: {}
-      check: null
+      check: {}
   delete_permissions:
   - role: root
     permission:
