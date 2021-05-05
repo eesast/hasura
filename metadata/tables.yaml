@@ -1401,6 +1401,16 @@
   - name: user
     using:
       foreign_key_constraint_on: user_id
+  array_relationships:
+  - name: history
+    using:
+      manual_configuration:
+        remote_table:
+          schema: public
+          name: postgraduate_application_history
+        column_mapping:
+          mentor_info_id: mentor_info_id
+          user_id: user_id
   insert_permissions:
   - role: EEsenior
     permission:
@@ -1507,6 +1517,17 @@
       - verified
       filter: {}
       check: {}
+  - role: teacher
+    permission:
+      columns:
+      - verified
+      - mentor_info_id
+      - user_id
+      - created_at
+      - updated_at
+      - status
+      filter: {}
+      check: null
   delete_permissions:
   - role: counselor
     permission:
@@ -1517,6 +1538,9 @@
         user_id:
           _eq: X-Hasura-User-Id
   - role: root
+    permission:
+      filter: {}
+  - role: teacher
     permission:
       filter: {}
 - table:
