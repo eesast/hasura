@@ -2727,6 +2727,30 @@
       filter: {}
 - table:
     schema: public
+    name: thuai_room_final
+  insert_permissions:
+  - role: root
+    permission:
+      check: {}
+      columns:
+      - room_id
+      - team_id_purple
+      - team_id_white
+      - created_at
+      - status
+      backend_only: false
+  select_permissions:
+  - role: root
+    permission:
+      columns:
+      - room_id
+      - team_id_purple
+      - team_id_white
+      - created_at
+      - status
+      filter: {}
+- table:
+    schema: public
     name: thuai_room_team
   object_relationships:
   - name: thuai_room
