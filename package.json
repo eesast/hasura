@@ -1,7 +1,7 @@
 {
   "name": "eesast-hasura",
   "dependencies": {
-    "hasura-cli": "2.35.1"
+    "hasura-cli": "2.35.2"
   },
   "scripts": {
     "apply": "hasura migrate apply && hasura metadata apply",
