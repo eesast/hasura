@@ -2193,11 +2193,7 @@
           - role
           - code_id
           - team_id
-        filter:
-          contest_team:
-            contest_team_members:
-              user_uuid:
-                _eq: X-Hasura-User-Id
+        filter: {}
         allow_aggregations: true
     - role: student
       permission:
@@ -2206,11 +2202,7 @@
           - role
           - code_id
           - team_id
-        filter:
-          contest_team:
-            contest_team_members:
-              user_uuid:
-                _eq: X-Hasura-User-Id
+        filter: {}
         allow_aggregations: true
     - role: teacher
       permission:
