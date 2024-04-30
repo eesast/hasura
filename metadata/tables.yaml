@@ -970,6 +970,7 @@
           - roles_available
           - team_label
         filter: {}
+        allow_aggregations: true
     - role: counselor
       permission:
         columns:
@@ -978,6 +979,7 @@
           - roles_available
           - team_label
         filter: {}
+        allow_aggregations: true
     - role: student
       permission:
         columns:
@@ -986,6 +988,7 @@
           - roles_available
           - team_label
         filter: {}
+        allow_aggregations: true
     - role: teacher
       permission:
         columns:
@@ -994,6 +997,7 @@
           - roles_available
           - team_label
         filter: {}
+        allow_aggregations: true
     - role: user
       permission:
         columns:
@@ -1002,6 +1006,7 @@
           - roles_available
           - team_label
         filter: {}
+        allow_aggregations: true
 - table:
     name: contest_room
     schema: public
@@ -2176,6 +2181,11 @@
           - code_id
           - team_id
   select_permissions:
+    - role: anonymous
+      permission:
+        columns: []
+        filter: {}
+        allow_aggregations: true
     - role: counselor
       permission:
         columns:
@@ -2183,11 +2193,8 @@
           - role
           - code_id
           - team_id
-        filter:
-          contest_team:
-            contest_team_members:
-              user_uuid:
-                _eq: X-Hasura-User-Id
+        filter: {}
+        allow_aggregations: true
     - role: student
       permission:
         columns:
@@ -2195,11 +2202,8 @@
           - role
           - code_id
           - team_id
-        filter:
-          contest_team:
-            contest_team_members:
-              user_uuid:
-                _eq: X-Hasura-User-Id
+        filter: {}
+        allow_aggregations: true
     - role: teacher
       permission:
         columns:
@@ -2212,6 +2216,7 @@
             contest_team_members:
               user_uuid:
                 _eq: X-Hasura-User-Id
+        allow_aggregations: true
     - role: user
       permission:
         columns:
@@ -2224,6 +2229,7 @@
             contest_team_members:
               user_uuid:
                 _eq: X-Hasura-User-Id
+        allow_aggregations: true
   update_permissions:
     - role: counselor
       permission:
