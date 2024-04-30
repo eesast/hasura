@@ -2193,8 +2193,11 @@
           - role
           - code_id
           - team_id
-        filter: {}
-        allow_aggregations: true
+        filter:
+          contest_team:
+            contest_team_members:
+              user_uuid:
+                _eq: X-Hasura-User-Id
     - role: student
       permission:
         columns:
@@ -2202,8 +2205,11 @@
           - role
           - code_id
           - team_id
-        filter: {}
-        allow_aggregations: true
+        filter:
+          contest_team:
+            contest_team_members:
+              user_uuid:
+                _eq: X-Hasura-User-Id
     - role: teacher
       permission:
         columns:
