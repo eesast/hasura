@@ -137,80 +137,95 @@
         columns:
           - arena_switch
           - code_upload_switch
-          - description
-          - end_date
-          - fullname
-          - id
-          - name
           - playback_switch
           - playground_switch
-          - start_date
           - stream_switch
           - team_switch
+          - client_memory_limit
+          - game_time
+          - server_memory_limit
+          - description
+          - fullname
+          - name
+          - end_date
+          - start_date
+          - id
         filter: {}
     - role: counselor
       permission:
         columns:
           - arena_switch
           - code_upload_switch
-          - description
-          - end_date
-          - fullname
-          - id
-          - name
           - playback_switch
           - playground_switch
-          - start_date
           - stream_switch
           - team_switch
+          - client_memory_limit
+          - game_time
+          - server_memory_limit
+          - description
+          - fullname
+          - name
+          - end_date
+          - start_date
+          - id
         filter: {}
     - role: student
       permission:
         columns:
           - arena_switch
           - code_upload_switch
-          - description
-          - end_date
-          - fullname
-          - id
-          - name
           - playback_switch
           - playground_switch
-          - start_date
           - stream_switch
           - team_switch
+          - client_memory_limit
+          - game_time
+          - server_memory_limit
+          - description
+          - fullname
+          - name
+          - end_date
+          - start_date
+          - id
         filter: {}
     - role: teacher
       permission:
         columns:
           - arena_switch
           - code_upload_switch
-          - description
-          - end_date
-          - fullname
-          - id
-          - name
           - playback_switch
           - playground_switch
-          - start_date
           - stream_switch
           - team_switch
+          - client_memory_limit
+          - game_time
+          - server_memory_limit
+          - description
+          - fullname
+          - name
+          - end_date
+          - start_date
+          - id
         filter: {}
     - role: user
       permission:
         columns:
           - arena_switch
           - code_upload_switch
-          - description
-          - end_date
-          - fullname
-          - id
-          - name
           - playback_switch
           - playground_switch
-          - start_date
           - stream_switch
           - team_switch
+          - client_memory_limit
+          - game_time
+          - server_memory_limit
+          - description
+          - fullname
+          - name
+          - end_date
+          - start_date
+          - id
         filter: {}
   update_permissions:
     - role: counselor
@@ -218,16 +233,19 @@
         columns:
           - arena_switch
           - code_upload_switch
-          - description
-          - end_date
-          - fullname
-          - id
-          - name
           - playback_switch
           - playground_switch
-          - start_date
           - stream_switch
           - team_switch
+          - client_memory_limit
+          - game_time
+          - server_memory_limit
+          - description
+          - fullname
+          - name
+          - end_date
+          - start_date
+          - id
         filter:
           contest_managers:
             user_uuid:
@@ -238,16 +256,19 @@
         columns:
           - arena_switch
           - code_upload_switch
-          - description
-          - end_date
-          - fullname
-          - id
-          - name
           - playback_switch
           - playground_switch
-          - start_date
           - stream_switch
           - team_switch
+          - client_memory_limit
+          - game_time
+          - server_memory_limit
+          - description
+          - fullname
+          - name
+          - end_date
+          - start_date
+          - id
         filter:
           contest_managers:
             user_uuid:
@@ -258,16 +279,19 @@
         columns:
           - arena_switch
           - code_upload_switch
-          - description
-          - end_date
-          - fullname
-          - id
-          - name
           - playback_switch
           - playground_switch
-          - start_date
           - stream_switch
           - team_switch
+          - client_memory_limit
+          - game_time
+          - server_memory_limit
+          - description
+          - fullname
+          - name
+          - end_date
+          - start_date
+          - id
         filter:
           contest_managers:
             user_uuid:
@@ -278,16 +302,19 @@
         columns:
           - arena_switch
           - code_upload_switch
-          - description
-          - end_date
-          - fullname
-          - id
-          - name
           - playback_switch
           - playground_switch
-          - start_date
           - stream_switch
           - team_switch
+          - client_memory_limit
+          - game_time
+          - server_memory_limit
+          - description
+          - fullname
+          - name
+          - end_date
+          - start_date
+          - id
         filter:
           contest_managers:
             user_uuid:
@@ -410,6 +437,15 @@
           - contest_id
           - map_id
   select_permissions:
+    - role: anonymous
+      permission:
+        columns:
+          - filename
+          - name
+          - team_labels
+          - contest_id
+          - map_id
+        filter: {}
     - role: counselor
       permission:
         columns:
@@ -1513,23 +1549,13 @@
     - role: anonymous
       permission:
         columns:
+          - code_id
           - code_name
           - compile_status
-          - language
           - created_at
-          - code_id
+          - language
           - team_id
-        filter:
-          _or:
-            - contest_team:
-                contest_team_members:
-                  user_uuid:
-                    _eq: X-Hasura-User-Id
-            - contest_team:
-                contest:
-                  contest_managers:
-                    user_uuid:
-                      _eq: X-Hasura-User-Id
+        filter: {}
         allow_aggregations: true
     - role: counselor
       permission:
@@ -1540,17 +1566,7 @@
           - created_at
           - language
           - team_id
-        filter:
-          _or:
-            - contest_team:
-                contest_team_members:
-                  user_uuid:
-                    _eq: X-Hasura-User-Id
-            - contest_team:
-                contest:
-                  contest_managers:
-                    user_uuid:
-                      _eq: X-Hasura-User-Id
+        filter: {}
         allow_aggregations: true
     - role: student
       permission:
@@ -1561,17 +1577,7 @@
           - created_at
           - language
           - team_id
-        filter:
-          _or:
-            - contest_team:
-                contest_team_members:
-                  user_uuid:
-                    _eq: X-Hasura-User-Id
-            - contest_team:
-                contest:
-                  contest_managers:
-                    user_uuid:
-                      _eq: X-Hasura-User-Id
+        filter: {}
         allow_aggregations: true
     - role: teacher
       permission:
@@ -1582,17 +1588,7 @@
           - created_at
           - language
           - team_id
-        filter:
-          _or:
-            - contest_team:
-                contest_team_members:
-                  user_uuid:
-                    _eq: X-Hasura-User-Id
-            - contest_team:
-                contest:
-                  contest_managers:
-                    user_uuid:
-                      _eq: X-Hasura-User-Id
+        filter: {}
         allow_aggregations: true
     - role: user
       permission:
@@ -1603,17 +1599,7 @@
           - created_at
           - language
           - team_id
-        filter:
-          _or:
-            - contest_team:
-                contest_team_members:
-                  user_uuid:
-                    _eq: X-Hasura-User-Id
-            - contest_team:
-                contest:
-                  contest_managers:
-                    user_uuid:
-                      _eq: X-Hasura-User-Id
+        filter: {}
         allow_aggregations: true
   update_permissions:
     - role: counselor
@@ -1952,7 +1938,11 @@
   select_permissions:
     - role: anonymous
       permission:
-        columns: []
+        columns:
+          - player
+          - role
+          - code_id
+          - team_id
         filter: {}
         allow_aggregations: true
     - role: counselor
@@ -1980,11 +1970,7 @@
           - role
           - code_id
           - team_id
-        filter:
-          contest_team:
-            contest_team_members:
-              user_uuid:
-                _eq: X-Hasura-User-Id
+        filter: {}
         allow_aggregations: true
     - role: user
       permission:
@@ -1993,11 +1979,7 @@
           - role
           - code_id
           - team_id
-        filter:
-          contest_team:
-            contest_team_members:
-              user_uuid:
-                _eq: X-Hasura-User-Id
+        filter: {}
         allow_aggregations: true
   update_permissions:
     - role: counselor
