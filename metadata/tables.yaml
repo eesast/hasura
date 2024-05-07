@@ -137,16 +137,14 @@
         columns:
           - arena_switch
           - code_upload_switch
-          - fullname
-          - contest_type
           - description
           - end_date
+          - fullname
           - id
           - name
           - playback_switch
           - playground_switch
           - start_date
-          - status
           - stream_switch
           - team_switch
         filter: {}
@@ -155,16 +153,14 @@
         columns:
           - arena_switch
           - code_upload_switch
-          - fullname
-          - contest_type
           - description
           - end_date
+          - fullname
           - id
           - name
           - playback_switch
           - playground_switch
           - start_date
-          - status
           - stream_switch
           - team_switch
         filter: {}
@@ -173,16 +169,14 @@
         columns:
           - arena_switch
           - code_upload_switch
-          - fullname
-          - contest_type
           - description
           - end_date
+          - fullname
           - id
           - name
           - playback_switch
           - playground_switch
           - start_date
-          - status
           - stream_switch
           - team_switch
         filter: {}
@@ -191,16 +185,14 @@
         columns:
           - arena_switch
           - code_upload_switch
-          - fullname
-          - contest_type
           - description
           - end_date
+          - fullname
           - id
           - name
           - playback_switch
           - playground_switch
           - start_date
-          - status
           - stream_switch
           - team_switch
         filter: {}
@@ -209,16 +201,14 @@
         columns:
           - arena_switch
           - code_upload_switch
-          - fullname
-          - contest_type
           - description
           - end_date
+          - fullname
           - id
           - name
           - playback_switch
           - playground_switch
           - start_date
-          - status
           - stream_switch
           - team_switch
         filter: {}
@@ -228,16 +218,14 @@
         columns:
           - arena_switch
           - code_upload_switch
-          - fullname
-          - contest_type
           - description
           - end_date
+          - fullname
           - id
           - name
           - playback_switch
           - playground_switch
           - start_date
-          - status
           - stream_switch
           - team_switch
         filter:
@@ -250,16 +238,14 @@
         columns:
           - arena_switch
           - code_upload_switch
-          - fullname
-          - contest_type
           - description
           - end_date
+          - fullname
           - id
           - name
           - playback_switch
           - playground_switch
           - start_date
-          - status
           - stream_switch
           - team_switch
         filter:
@@ -272,16 +258,14 @@
         columns:
           - arena_switch
           - code_upload_switch
-          - fullname
-          - contest_type
           - description
           - end_date
+          - fullname
           - id
           - name
           - playback_switch
           - playground_switch
           - start_date
-          - status
           - stream_switch
           - team_switch
         filter:
@@ -294,16 +278,14 @@
         columns:
           - arena_switch
           - code_upload_switch
-          - fullname
-          - contest_type
           - description
           - end_date
+          - fullname
           - id
           - name
           - playback_switch
           - playground_switch
           - start_date
-          - status
           - stream_switch
           - team_switch
         filter:
@@ -311,152 +293,6 @@
             user_uuid:
               _eq: X-Hasura-User-Id
         check: {}
-- table:
-    name: contest_code
-    schema: public
-  insert_permissions:
-    - role: counselor
-      permission:
-        check: {}
-        columns:
-          - team_id
-          - code1
-          - code2
-          - code3
-          - code4
-          - code5
-          - code6
-          - created_at
-          - updated_at
-          - contest_id
-          - code1_update_time
-          - code2_update_time
-          - code3_update_time
-          - code4_update_time
-          - code5_update_time
-          - code6_update_time
-    - role: student
-      permission:
-        check: {}
-        columns:
-          - team_id
-          - code1
-          - code2
-          - code3
-          - code4
-          - code5
-          - code6
-          - created_at
-          - updated_at
-          - contest_id
-          - code1_update_time
-          - code2_update_time
-          - code3_update_time
-          - code4_update_time
-          - code5_update_time
-          - code6_update_time
-          - code_type1
-          - code_type2
-          - code_type3
-          - code_type4
-          - code_type5
-          - code_type6
-  select_permissions:
-    - role: counselor
-      permission:
-        columns:
-          - code1
-          - code2
-          - code3
-          - code4
-          - code5
-          - code6
-          - code1_update_time
-          - code2_update_time
-          - code3_update_time
-          - code4_update_time
-          - code5_update_time
-          - code6_update_time
-          - created_at
-          - updated_at
-          - contest_id
-          - team_id
-        filter: {}
-    - role: student
-      permission:
-        columns:
-          - code1
-          - code2
-          - code3
-          - code4
-          - code5
-          - code6
-          - code_type1
-          - code_type2
-          - code_type3
-          - code_type4
-          - code_type5
-          - code_type6
-          - code1_update_time
-          - code2_update_time
-          - code3_update_time
-          - code4_update_time
-          - code5_update_time
-          - code6_update_time
-          - created_at
-          - updated_at
-          - contest_id
-          - team_id
-        filter: {}
-  update_permissions:
-    - role: counselor
-      permission:
-        columns:
-          - code1
-          - code2
-          - code3
-          - code4
-          - code5
-          - code6
-          - code1_update_time
-          - code2_update_time
-          - code3_update_time
-          - code4_update_time
-          - code5_update_time
-          - code6_update_time
-          - created_at
-          - updated_at
-          - contest_id
-          - team_id
-        filter: {}
-        check: null
-    - role: student
-      permission:
-        columns:
-          - code1
-          - code2
-          - code3
-          - code4
-          - code5
-          - code6
-          - code_type1
-          - code_type2
-          - code_type3
-          - code_type4
-          - code_type5
-          - code_type6
-          - code1_update_time
-          - code2_update_time
-          - code3_update_time
-          - code4_update_time
-          - code5_update_time
-          - code6_update_time
-          - created_at
-          - updated_at
-          - contest_id
-          - team_id
-        filter: {}
-        check: null
 - table:
     name: contest_manager
     schema: public
@@ -1032,71 +868,61 @@
     - role: anonymous
       permission:
         columns:
-          - status
-          - result
-          - created_at
-          - room_id
           - contest_id
-          - port
-          - round_id
+          - created_at
           - map_id
-          - updated_at
+          - port
+          - room_id
+          - round_id
+          - status
         filter: {}
         allow_aggregations: true
     - role: counselor
       permission:
         columns:
-          - status
-          - result
-          - created_at
-          - room_id
           - contest_id
-          - port
-          - round_id
+          - created_at
           - map_id
-          - updated_at
+          - port
+          - room_id
+          - round_id
+          - status
         filter: {}
         allow_aggregations: true
     - role: student
       permission:
         columns:
-          - status
-          - result
-          - created_at
-          - room_id
           - contest_id
-          - port
-          - round_id
+          - created_at
           - map_id
-          - updated_at
+          - port
+          - room_id
+          - round_id
+          - status
         filter: {}
         allow_aggregations: true
     - role: teacher
       permission:
         columns:
-          - status
-          - result
-          - created_at
-          - room_id
           - contest_id
-          - port
-          - round_id
+          - created_at
           - map_id
-          - updated_at
+          - port
+          - room_id
+          - round_id
+          - status
         filter: {}
         allow_aggregations: true
     - role: user
       permission:
         columns:
-          - status
-          - result
-          - created_at
-          - room_id
           - contest_id
-          - port
-          - round_id
+          - created_at
           - map_id
-          - updated_at
+          - port
+          - room_id
+          - round_id
+          - status
         filter: {}
         allow_aggregations: true
 - table:
@@ -1420,14 +1246,8 @@
         check: {}
         columns:
           - contest_id
-          - contest_score
           - created_at
           - invited_code
-          - member_num
-          - score
-          - status
-          - status2
-          - submitted_code_num
           - team_id
           - team_intro
           - team_leader_uuid
@@ -1438,14 +1258,8 @@
         check: {}
         columns:
           - contest_id
-          - contest_score
           - created_at
           - invited_code
-          - member_num
-          - score
-          - status
-          - status2
-          - submitted_code_num
           - team_id
           - team_intro
           - team_leader_uuid
@@ -1456,14 +1270,8 @@
         check: {}
         columns:
           - contest_id
-          - contest_score
           - created_at
           - invited_code
-          - member_num
-          - score
-          - status
-          - status2
-          - submitted_code_num
           - team_id
           - team_intro
           - team_leader_uuid
@@ -1474,14 +1282,8 @@
         check: {}
         columns:
           - contest_id
-          - contest_score
           - created_at
           - invited_code
-          - member_num
-          - score
-          - status
-          - status2
-          - submitted_code_num
           - team_id
           - team_intro
           - team_leader_uuid
@@ -1492,14 +1294,8 @@
       permission:
         columns:
           - contest_id
-          - contest_score
           - created_at
           - invited_code
-          - member_num
-          - score
-          - status
-          - status2
-          - submitted_code_num
           - team_id
           - team_intro
           - team_leader_uuid
@@ -1511,14 +1307,8 @@
       permission:
         columns:
           - contest_id
-          - contest_score
           - created_at
           - invited_code
-          - member_num
-          - score
-          - status
-          - status2
-          - submitted_code_num
           - team_id
           - team_intro
           - team_leader_uuid
@@ -1530,14 +1320,8 @@
       permission:
         columns:
           - contest_id
-          - contest_score
           - created_at
           - invited_code
-          - member_num
-          - score
-          - status
-          - status2
-          - submitted_code_num
           - team_id
           - team_intro
           - team_leader_uuid
@@ -1549,14 +1333,8 @@
       permission:
         columns:
           - contest_id
-          - contest_score
           - created_at
           - invited_code
-          - member_num
-          - score
-          - status
-          - status2
-          - submitted_code_num
           - team_id
           - team_intro
           - team_leader_uuid
@@ -1568,14 +1346,8 @@
       permission:
         columns:
           - contest_id
-          - contest_score
           - created_at
           - invited_code
-          - member_num
-          - score
-          - status
-          - status2
-          - submitted_code_num
           - team_id
           - team_intro
           - team_leader_uuid
@@ -1587,20 +1359,14 @@
     - role: counselor
       permission:
         columns:
-          - submitted_code_num
-          - contest_score
-          - invited_code
-          - score
-          - status
-          - status2
-          - team_intro
-          - team_name
-          - created_at
-          - updated_at
           - contest_id
+          - created_at
+          - invited_code
           - team_id
+          - team_intro
           - team_leader_uuid
-          - member_num
+          - team_name
+          - updated_at
         filter:
           contest_team_members:
             user_uuid:
@@ -1609,20 +1375,14 @@
     - role: student
       permission:
         columns:
-          - submitted_code_num
-          - contest_score
-          - invited_code
-          - score
-          - status
-          - status2
-          - team_intro
-          - team_name
-          - created_at
-          - updated_at
           - contest_id
+          - created_at
+          - invited_code
           - team_id
+          - team_intro
           - team_leader_uuid
-          - member_num
+          - team_name
+          - updated_at
         filter:
           contest_team_members:
             user_uuid:
@@ -1631,20 +1391,14 @@
     - role: teacher
       permission:
         columns:
-          - submitted_code_num
-          - contest_score
-          - invited_code
-          - score
-          - status
-          - status2
-          - team_intro
-          - team_name
-          - created_at
-          - updated_at
           - contest_id
+          - created_at
+          - invited_code
           - team_id
+          - team_intro
           - team_leader_uuid
-          - member_num
+          - team_name
+          - updated_at
         filter:
           contest_team_members:
             user_uuid:
@@ -1653,20 +1407,14 @@
     - role: user
       permission:
         columns:
-          - submitted_code_num
-          - contest_score
-          - invited_code
-          - score
-          - status
-          - status2
-          - team_intro
-          - team_name
-          - created_at
-          - updated_at
           - contest_id
+          - created_at
+          - invited_code
           - team_id
+          - team_intro
           - team_leader_uuid
-          - member_num
+          - team_name
+          - updated_at
         filter:
           contest_team_members:
             user_uuid:
