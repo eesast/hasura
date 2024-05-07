@@ -1762,6 +1762,27 @@
           - language
           - team_id
   select_permissions:
+    - role: anonymous
+      permission:
+        columns:
+          - code_name
+          - compile_status
+          - language
+          - created_at
+          - code_id
+          - team_id
+        filter:
+          _or:
+            - contest_team:
+                contest_team_members:
+                  user_uuid:
+                    _eq: X-Hasura-User-Id
+            - contest_team:
+                contest:
+                  contest_managers:
+                    user_uuid:
+                      _eq: X-Hasura-User-Id
+        allow_aggregations: true
     - role: counselor
       permission:
         columns:
