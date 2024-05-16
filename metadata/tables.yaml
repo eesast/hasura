@@ -2296,6 +2296,457 @@
               user_uuid:
                 _eq: X-Hasura-User-Id
 - table:
+    name: course
+    schema: public
+  array_relationships:
+    - name: course_comments
+      using:
+        foreign_key_constraint_on:
+          column: course_id
+          table:
+            name: course_comment
+            schema: public
+    - name: course_infos
+      using:
+        foreign_key_constraint_on:
+          column: course_id
+          table:
+            name: course_info
+            schema: public
+    - name: course_ratings
+      using:
+        foreign_key_constraint_on:
+          column: course_id
+          table:
+            name: course_rating
+            schema: public
+  select_permissions:
+    - role: counselor
+      permission:
+        columns:
+          - year
+          - code
+          - fullname
+          - language
+          - name
+          - professor
+          - semester
+          - type
+          - uuid
+        filter: {}
+    - role: student
+      permission:
+        columns:
+          - year
+          - code
+          - fullname
+          - language
+          - name
+          - professor
+          - semester
+          - type
+          - uuid
+        filter: {}
+    - role: teacher
+      permission:
+        columns:
+          - year
+          - code
+          - fullname
+          - language
+          - name
+          - professor
+          - semester
+          - type
+          - uuid
+        filter: {}
+- table:
+    name: course_comment
+    schema: public
+  object_relationships:
+    - name: course
+      using:
+        foreign_key_constraint_on: course_id
+    - name: user
+      using:
+        foreign_key_constraint_on: user_uuid
+  insert_permissions:
+    - role: counselor
+      permission:
+        check: {}
+        columns:
+          - comment
+          - created_at
+          - updated_at
+          - course_id
+          - user_uuid
+          - uuid
+    - role: student
+      permission:
+        check: {}
+        columns:
+          - comment
+          - created_at
+          - updated_at
+          - course_id
+          - user_uuid
+          - uuid
+    - role: teacher
+      permission:
+        check: {}
+        columns:
+          - comment
+          - created_at
+          - updated_at
+          - course_id
+          - user_uuid
+          - uuid
+  select_permissions:
+    - role: counselor
+      permission:
+        columns:
+          - comment
+          - created_at
+          - updated_at
+          - course_id
+          - user_uuid
+          - uuid
+        filter: {}
+    - role: student
+      permission:
+        columns:
+          - comment
+          - created_at
+          - updated_at
+          - course_id
+          - user_uuid
+          - uuid
+        filter: {}
+    - role: teacher
+      permission:
+        columns:
+          - comment
+          - created_at
+          - updated_at
+          - course_id
+          - user_uuid
+          - uuid
+        filter: {}
+  update_permissions:
+    - role: counselor
+      permission:
+        columns:
+          - comment
+          - created_at
+          - updated_at
+          - course_id
+          - user_uuid
+          - uuid
+        filter: {}
+        check: {}
+    - role: student
+      permission:
+        columns:
+          - comment
+          - created_at
+          - updated_at
+          - course_id
+          - user_uuid
+          - uuid
+        filter: {}
+        check: {}
+    - role: teacher
+      permission:
+        columns:
+          - comment
+          - created_at
+          - updated_at
+          - course_id
+          - user_uuid
+          - uuid
+        filter: {}
+        check: {}
+  delete_permissions:
+    - role: counselor
+      permission:
+        backend_only: false
+        filter: {}
+    - role: student
+      permission:
+        backend_only: false
+        filter: {}
+    - role: teacher
+      permission:
+        backend_only: false
+        filter: {}
+- table:
+    name: course_info
+    schema: public
+  object_relationships:
+    - name: course
+      using:
+        foreign_key_constraint_on: course_id
+  insert_permissions:
+    - role: counselor
+      permission:
+        check: {}
+        columns:
+          - key
+          - value
+          - course_id
+    - role: student
+      permission:
+        check: {}
+        columns:
+          - key
+          - value
+          - course_id
+    - role: teacher
+      permission:
+        check: {}
+        columns:
+          - key
+          - value
+          - course_id
+  select_permissions:
+    - role: counselor
+      permission:
+        columns:
+          - course_id
+          - key
+          - value
+        filter: {}
+    - role: student
+      permission:
+        columns:
+          - course_id
+          - key
+          - value
+        filter: {}
+    - role: teacher
+      permission:
+        columns:
+          - course_id
+          - key
+          - value
+        filter: {}
+  update_permissions:
+    - role: counselor
+      permission:
+        columns:
+          - key
+          - value
+          - course_id
+        filter: {}
+        check: {}
+    - role: student
+      permission:
+        columns:
+          - key
+          - value
+          - course_id
+        filter: {}
+        check: {}
+    - role: teacher
+      permission:
+        columns:
+          - key
+          - value
+          - course_id
+        filter: {}
+        check: {}
+  delete_permissions:
+    - role: counselor
+      permission:
+        backend_only: false
+        filter: {}
+    - role: student
+      permission:
+        backend_only: false
+        filter: {}
+    - role: teacher
+      permission:
+        backend_only: false
+        filter: {}
+- table:
+    name: course_manager
+    schema: public
+  object_relationships:
+    - name: user
+      using:
+        foreign_key_constraint_on: user_uuid
+  select_permissions:
+    - role: counselor
+      permission:
+        columns:
+          - user_uuid
+        filter: {}
+    - role: student
+      permission:
+        columns:
+          - user_uuid
+        filter: {}
+    - role: teacher
+      permission:
+        columns:
+          - user_uuid
+        filter: {}
+- table:
+    name: course_rating
+    schema: public
+  object_relationships:
+    - name: course
+      using:
+        foreign_key_constraint_on: course_id
+    - name: user
+      using:
+        foreign_key_constraint_on: user_uuid
+  insert_permissions:
+    - role: counselor
+      permission:
+        check: {}
+        columns:
+          - dim1
+          - dim2
+          - dim3
+          - dim4
+          - dim5
+          - dim6
+          - created_at
+          - updated_at
+          - course_id
+          - user_uuid
+    - role: student
+      permission:
+        check: {}
+        columns:
+          - dim1
+          - dim2
+          - dim3
+          - dim4
+          - dim5
+          - dim6
+          - created_at
+          - updated_at
+          - course_id
+          - user_uuid
+    - role: teacher
+      permission:
+        check: {}
+        columns:
+          - dim1
+          - dim2
+          - dim3
+          - dim4
+          - dim5
+          - dim6
+          - created_at
+          - updated_at
+          - course_id
+          - user_uuid
+  select_permissions:
+    - role: counselor
+      permission:
+        columns:
+          - dim1
+          - dim2
+          - dim3
+          - dim4
+          - dim5
+          - dim6
+          - created_at
+          - updated_at
+          - course_id
+          - user_uuid
+        filter: {}
+    - role: student
+      permission:
+        columns:
+          - dim1
+          - dim2
+          - dim3
+          - dim4
+          - dim5
+          - dim6
+          - created_at
+          - updated_at
+          - course_id
+          - user_uuid
+        filter: {}
+    - role: teacher
+      permission:
+        columns:
+          - dim1
+          - dim2
+          - dim3
+          - dim4
+          - dim5
+          - dim6
+          - created_at
+          - updated_at
+          - course_id
+          - user_uuid
+        filter: {}
+  update_permissions:
+    - role: counselor
+      permission:
+        columns:
+          - dim1
+          - dim2
+          - dim3
+          - dim4
+          - dim5
+          - dim6
+          - created_at
+          - updated_at
+          - course_id
+          - user_uuid
+        filter: {}
+        check: {}
+    - role: student
+      permission:
+        columns:
+          - dim1
+          - dim2
+          - dim3
+          - dim4
+          - dim5
+          - dim6
+          - created_at
+          - updated_at
+          - course_id
+          - user_uuid
+        filter: {}
+        check: {}
+    - role: teacher
+      permission:
+        columns:
+          - dim1
+          - dim2
+          - dim3
+          - dim4
+          - dim5
+          - dim6
+          - created_at
+          - updated_at
+          - course_id
+          - user_uuid
+        filter: {}
+        check: {}
+  delete_permissions:
+    - role: counselor
+      permission:
+        backend_only: false
+        filter: {}
+    - role: student
+      permission:
+        backend_only: false
+        filter: {}
+    - role: teacher
+      permission:
+        backend_only: false
+        filter: {}
+- table:
     name: department
     schema: public
   select_permissions:
@@ -3373,23 +3824,6 @@
           - name
           - salutation
           - type
-        filter: {}
-- table:
-    name: share_course
-    schema: public
-  select_permissions:
-    - role: student
-      permission:
-        columns:
-          - year
-          - code
-          - fullname
-          - language
-          - name
-          - professor
-          - semester
-          - type
-          - uuid
         filter: {}
 - table:
     name: users

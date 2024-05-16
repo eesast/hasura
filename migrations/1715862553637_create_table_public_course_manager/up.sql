@@ -1,0 +1,1 @@
+CREATE TABLE "public"."course_manager" ("user" uuid NOT NULL, PRIMARY KEY ("user") , FOREIGN KEY ("user") REFERENCES "public"."users"("uuid") ON UPDATE restrict ON DELETE cascade, UNIQUE ("user"));COMMENT ON TABLE "public"."course_manager" IS E'课程共享平台的管理员';
