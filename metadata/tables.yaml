@@ -2370,15 +2370,37 @@
     - name: user
       using:
         foreign_key_constraint_on: user_uuid
+  array_relationships:
+    - name: course_comment_comments
+      using:
+        foreign_key_constraint_on:
+          column: comment_uuid
+          table:
+            name: course_comment_comment
+            schema: public
+    - name: course_comment_likes
+      using:
+        foreign_key_constraint_on:
+          column: comment_uuid
+          table:
+            name: course_comment_like
+            schema: public
+    - name: course_comment_stars
+      using:
+        foreign_key_constraint_on:
+          column: comment_uuid
+          table:
+            name: course_comment_star
+            schema: public
   insert_permissions:
     - role: counselor
       permission:
         check: {}
         columns:
           - comment
+          - course_id
           - created_at
           - updated_at
-          - course_id
           - user_uuid
           - uuid
     - role: student
@@ -2386,9 +2408,9 @@
         check: {}
         columns:
           - comment
+          - course_id
           - created_at
           - updated_at
-          - course_id
           - user_uuid
           - uuid
     - role: teacher
@@ -2396,9 +2418,9 @@
         check: {}
         columns:
           - comment
+          - course_id
           - created_at
           - updated_at
-          - course_id
           - user_uuid
           - uuid
   select_permissions:
@@ -2408,8 +2430,6 @@
           - comment
           - course_id
           - created_at
-          - like
-          - star
           - updated_at
           - user_uuid
           - uuid
@@ -2420,8 +2440,6 @@
           - comment
           - course_id
           - created_at
-          - like
-          - star
           - updated_at
           - user_uuid
           - uuid
@@ -2430,9 +2448,9 @@
       permission:
         columns:
           - comment
+          - course_id
           - created_at
           - updated_at
-          - course_id
           - user_uuid
           - uuid
         filter: {}
@@ -2441,9 +2459,9 @@
       permission:
         columns:
           - comment
+          - course_id
           - created_at
           - updated_at
-          - course_id
           - user_uuid
           - uuid
         filter: {}
@@ -2452,9 +2470,9 @@
       permission:
         columns:
           - comment
+          - course_id
           - created_at
           - updated_at
-          - course_id
           - user_uuid
           - uuid
         filter: {}
@@ -2463,11 +2481,287 @@
       permission:
         columns:
           - comment
+          - course_id
           - created_at
           - updated_at
-          - course_id
           - user_uuid
           - uuid
+        filter: {}
+        check: {}
+  delete_permissions:
+    - role: counselor
+      permission:
+        backend_only: false
+        filter: {}
+    - role: student
+      permission:
+        backend_only: false
+        filter: {}
+    - role: teacher
+      permission:
+        backend_only: false
+        filter: {}
+- table:
+    name: course_comment_comment
+    schema: public
+  object_relationships:
+    - name: course_comment
+      using:
+        foreign_key_constraint_on: comment_uuid
+    - name: user
+      using:
+        foreign_key_constraint_on: user_uuid
+  insert_permissions:
+    - role: counselor
+      permission:
+        check: {}
+        columns:
+          - comment
+          - create_at
+          - update_at
+          - comment_uuid
+          - user_uuid
+    - role: student
+      permission:
+        check: {}
+        columns:
+          - comment
+          - create_at
+          - update_at
+          - comment_uuid
+          - user_uuid
+    - role: teacher
+      permission:
+        check: {}
+        columns:
+          - comment
+          - create_at
+          - update_at
+          - comment_uuid
+          - user_uuid
+  select_permissions:
+    - role: counselor
+      permission:
+        columns:
+          - comment
+          - create_at
+          - update_at
+          - comment_uuid
+          - user_uuid
+        filter: {}
+    - role: student
+      permission:
+        columns:
+          - comment
+          - create_at
+          - update_at
+          - comment_uuid
+          - user_uuid
+        filter: {}
+    - role: teacher
+      permission:
+        columns:
+          - comment
+          - create_at
+          - update_at
+          - comment_uuid
+          - user_uuid
+        filter: {}
+  update_permissions:
+    - role: counselor
+      permission:
+        columns:
+          - comment
+          - create_at
+          - update_at
+          - comment_uuid
+          - user_uuid
+        filter: {}
+        check: {}
+    - role: student
+      permission:
+        columns:
+          - comment
+          - create_at
+          - update_at
+          - comment_uuid
+          - user_uuid
+        filter: {}
+        check: {}
+    - role: teacher
+      permission:
+        columns:
+          - comment
+          - create_at
+          - update_at
+          - comment_uuid
+          - user_uuid
+        filter: {}
+        check: {}
+  delete_permissions:
+    - role: counselor
+      permission:
+        backend_only: false
+        filter: {}
+    - role: student
+      permission:
+        backend_only: false
+        filter: {}
+    - role: teacher
+      permission:
+        backend_only: false
+        filter: {}
+- table:
+    name: course_comment_like
+    schema: public
+  object_relationships:
+    - name: course_comment
+      using:
+        foreign_key_constraint_on: comment_uuid
+    - name: user
+      using:
+        foreign_key_constraint_on: user_uuid
+  insert_permissions:
+    - role: counselor
+      permission:
+        check: {}
+        columns:
+          - comment_uuid
+          - user_uuid
+    - role: student
+      permission:
+        check: {}
+        columns:
+          - comment_uuid
+          - user_uuid
+    - role: teacher
+      permission:
+        check: {}
+        columns:
+          - comment_uuid
+          - user_uuid
+  select_permissions:
+    - role: counselor
+      permission:
+        columns:
+          - comment_uuid
+          - user_uuid
+        filter: {}
+    - role: student
+      permission:
+        columns:
+          - comment_uuid
+          - user_uuid
+        filter: {}
+    - role: teacher
+      permission:
+        columns:
+          - comment_uuid
+          - user_uuid
+        filter: {}
+  update_permissions:
+    - role: counselor
+      permission:
+        columns:
+          - comment_uuid
+          - user_uuid
+        filter: {}
+        check: {}
+    - role: student
+      permission:
+        columns:
+          - comment_uuid
+          - user_uuid
+        filter: {}
+        check: {}
+    - role: teacher
+      permission:
+        columns:
+          - comment_uuid
+          - user_uuid
+        filter: {}
+        check: {}
+  delete_permissions:
+    - role: counselor
+      permission:
+        backend_only: false
+        filter: {}
+    - role: student
+      permission:
+        backend_only: false
+        filter: {}
+    - role: teacher
+      permission:
+        backend_only: false
+        filter: {}
+- table:
+    name: course_comment_star
+    schema: public
+  object_relationships:
+    - name: course_comment
+      using:
+        foreign_key_constraint_on: comment_uuid
+    - name: user
+      using:
+        foreign_key_constraint_on: user_uuid
+  insert_permissions:
+    - role: counselor
+      permission:
+        check: {}
+        columns:
+          - comment_uuid
+          - user_uuid
+    - role: student
+      permission:
+        check: {}
+        columns:
+          - comment_uuid
+          - user_uuid
+    - role: teacher
+      permission:
+        check: {}
+        columns:
+          - comment_uuid
+          - user_uuid
+  select_permissions:
+    - role: counselor
+      permission:
+        columns:
+          - comment_uuid
+          - user_uuid
+        filter: {}
+    - role: student
+      permission:
+        columns:
+          - comment_uuid
+          - user_uuid
+        filter: {}
+    - role: teacher
+      permission:
+        columns:
+          - comment_uuid
+          - user_uuid
+        filter: {}
+  update_permissions:
+    - role: counselor
+      permission:
+        columns:
+          - comment_uuid
+          - user_uuid
+        filter: {}
+        check: {}
+    - role: student
+      permission:
+        columns:
+          - comment_uuid
+          - user_uuid
+        filter: {}
+        check: {}
+    - role: teacher
+      permission:
+        columns:
+          - comment_uuid
+          - user_uuid
         filter: {}
         check: {}
   delete_permissions:
@@ -3847,6 +4141,41 @@
           column: user_uuid
           table:
             name: contest_team_member
+            schema: public
+    - name: course_comment_comments
+      using:
+        foreign_key_constraint_on:
+          column: user_uuid
+          table:
+            name: course_comment_comment
+            schema: public
+    - name: course_comment_likes
+      using:
+        foreign_key_constraint_on:
+          column: user_uuid
+          table:
+            name: course_comment_like
+            schema: public
+    - name: course_comment_stars
+      using:
+        foreign_key_constraint_on:
+          column: user_uuid
+          table:
+            name: course_comment_star
+            schema: public
+    - name: course_comments
+      using:
+        foreign_key_constraint_on:
+          column: user_uuid
+          table:
+            name: course_comment
+            schema: public
+    - name: course_ratings
+      using:
+        foreign_key_constraint_on:
+          column: user_uuid
+          table:
+            name: course_rating
             schema: public
     - name: mentor_application_as_mentor
       using:
