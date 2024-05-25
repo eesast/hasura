@@ -137,90 +137,95 @@
         columns:
           - arena_switch
           - code_upload_switch
-          - fullname
-          - contest_type
-          - description
-          - end_date
-          - id
-          - name
           - playback_switch
           - playground_switch
-          - start_date
-          - status
           - stream_switch
           - team_switch
+          - client_memory_limit
+          - game_time
+          - server_memory_limit
+          - description
+          - fullname
+          - name
+          - end_date
+          - start_date
+          - id
         filter: {}
     - role: counselor
       permission:
         columns:
           - arena_switch
           - code_upload_switch
-          - fullname
-          - contest_type
-          - description
-          - end_date
-          - id
-          - name
           - playback_switch
           - playground_switch
-          - start_date
-          - status
           - stream_switch
           - team_switch
+          - client_memory_limit
+          - game_time
+          - server_memory_limit
+          - description
+          - fullname
+          - name
+          - end_date
+          - start_date
+          - id
         filter: {}
     - role: student
       permission:
         columns:
           - arena_switch
           - code_upload_switch
-          - fullname
-          - contest_type
-          - description
-          - end_date
-          - id
-          - name
           - playback_switch
           - playground_switch
-          - start_date
-          - status
           - stream_switch
           - team_switch
+          - client_memory_limit
+          - game_time
+          - server_memory_limit
+          - description
+          - fullname
+          - name
+          - end_date
+          - start_date
+          - id
         filter: {}
     - role: teacher
       permission:
         columns:
           - arena_switch
           - code_upload_switch
-          - fullname
-          - contest_type
-          - description
-          - end_date
-          - id
-          - name
           - playback_switch
           - playground_switch
-          - start_date
-          - status
           - stream_switch
           - team_switch
+          - client_memory_limit
+          - game_time
+          - server_memory_limit
+          - description
+          - fullname
+          - name
+          - end_date
+          - start_date
+          - id
         filter: {}
     - role: user
       permission:
         columns:
           - arena_switch
           - code_upload_switch
-          - fullname
-          - contest_type
-          - description
-          - end_date
-          - id
-          - name
           - playback_switch
           - playground_switch
-          - start_date
-          - status
           - stream_switch
           - team_switch
+          - client_memory_limit
+          - game_time
+          - server_memory_limit
+          - description
+          - fullname
+          - name
+          - end_date
+          - start_date
+          - id
         filter: {}
   update_permissions:
     - role: counselor
@@ -228,18 +233,19 @@
         columns:
           - arena_switch
           - code_upload_switch
-          - fullname
-          - contest_type
-          - description
-          - end_date
-          - id
-          - name
           - playback_switch
           - playground_switch
-          - start_date
-          - status
           - stream_switch
           - team_switch
+          - client_memory_limit
+          - game_time
+          - server_memory_limit
+          - description
+          - fullname
+          - name
+          - end_date
+          - start_date
+          - id
         filter:
           contest_managers:
             user_uuid:
@@ -250,18 +256,19 @@
         columns:
           - arena_switch
           - code_upload_switch
-          - fullname
-          - contest_type
-          - description
-          - end_date
-          - id
-          - name
           - playback_switch
           - playground_switch
-          - start_date
-          - status
           - stream_switch
           - team_switch
+          - client_memory_limit
+          - game_time
+          - server_memory_limit
+          - description
+          - fullname
+          - name
+          - end_date
+          - start_date
+          - id
         filter:
           contest_managers:
             user_uuid:
@@ -272,18 +279,19 @@
         columns:
           - arena_switch
           - code_upload_switch
-          - fullname
-          - contest_type
-          - description
-          - end_date
-          - id
-          - name
           - playback_switch
           - playground_switch
-          - start_date
-          - status
           - stream_switch
           - team_switch
+          - client_memory_limit
+          - game_time
+          - server_memory_limit
+          - description
+          - fullname
+          - name
+          - end_date
+          - start_date
+          - id
         filter:
           contest_managers:
             user_uuid:
@@ -294,169 +302,24 @@
         columns:
           - arena_switch
           - code_upload_switch
-          - fullname
-          - contest_type
-          - description
-          - end_date
-          - id
-          - name
           - playback_switch
           - playground_switch
-          - start_date
-          - status
           - stream_switch
           - team_switch
+          - client_memory_limit
+          - game_time
+          - server_memory_limit
+          - description
+          - fullname
+          - name
+          - end_date
+          - start_date
+          - id
         filter:
           contest_managers:
             user_uuid:
               _eq: X-Hasura-User-Id
         check: {}
-- table:
-    name: contest_code
-    schema: public
-  insert_permissions:
-    - role: counselor
-      permission:
-        check: {}
-        columns:
-          - team_id
-          - code1
-          - code2
-          - code3
-          - code4
-          - code5
-          - code6
-          - created_at
-          - updated_at
-          - contest_id
-          - code1_update_time
-          - code2_update_time
-          - code3_update_time
-          - code4_update_time
-          - code5_update_time
-          - code6_update_time
-    - role: student
-      permission:
-        check: {}
-        columns:
-          - team_id
-          - code1
-          - code2
-          - code3
-          - code4
-          - code5
-          - code6
-          - created_at
-          - updated_at
-          - contest_id
-          - code1_update_time
-          - code2_update_time
-          - code3_update_time
-          - code4_update_time
-          - code5_update_time
-          - code6_update_time
-          - code_type1
-          - code_type2
-          - code_type3
-          - code_type4
-          - code_type5
-          - code_type6
-  select_permissions:
-    - role: counselor
-      permission:
-        columns:
-          - code1
-          - code2
-          - code3
-          - code4
-          - code5
-          - code6
-          - code1_update_time
-          - code2_update_time
-          - code3_update_time
-          - code4_update_time
-          - code5_update_time
-          - code6_update_time
-          - created_at
-          - updated_at
-          - contest_id
-          - team_id
-        filter: {}
-    - role: student
-      permission:
-        columns:
-          - code1
-          - code2
-          - code3
-          - code4
-          - code5
-          - code6
-          - code_type1
-          - code_type2
-          - code_type3
-          - code_type4
-          - code_type5
-          - code_type6
-          - code1_update_time
-          - code2_update_time
-          - code3_update_time
-          - code4_update_time
-          - code5_update_time
-          - code6_update_time
-          - created_at
-          - updated_at
-          - contest_id
-          - team_id
-        filter: {}
-  update_permissions:
-    - role: counselor
-      permission:
-        columns:
-          - code1
-          - code2
-          - code3
-          - code4
-          - code5
-          - code6
-          - code1_update_time
-          - code2_update_time
-          - code3_update_time
-          - code4_update_time
-          - code5_update_time
-          - code6_update_time
-          - created_at
-          - updated_at
-          - contest_id
-          - team_id
-        filter: {}
-        check: null
-    - role: student
-      permission:
-        columns:
-          - code1
-          - code2
-          - code3
-          - code4
-          - code5
-          - code6
-          - code_type1
-          - code_type2
-          - code_type3
-          - code_type4
-          - code_type5
-          - code_type6
-          - code1_update_time
-          - code2_update_time
-          - code3_update_time
-          - code4_update_time
-          - code5_update_time
-          - code6_update_time
-          - created_at
-          - updated_at
-          - contest_id
-          - team_id
-        filter: {}
-        check: null
 - table:
     name: contest_manager
     schema: public
@@ -574,6 +437,15 @@
           - contest_id
           - map_id
   select_permissions:
+    - role: anonymous
+      permission:
+        columns:
+          - filename
+          - name
+          - team_labels
+          - contest_id
+          - map_id
+        filter: {}
     - role: counselor
       permission:
         columns:
@@ -1032,71 +904,61 @@
     - role: anonymous
       permission:
         columns:
-          - status
-          - result
-          - created_at
-          - room_id
           - contest_id
-          - port
-          - round_id
+          - created_at
           - map_id
-          - updated_at
+          - port
+          - room_id
+          - round_id
+          - status
         filter: {}
         allow_aggregations: true
     - role: counselor
       permission:
         columns:
-          - status
-          - result
-          - created_at
-          - room_id
           - contest_id
-          - port
-          - round_id
+          - created_at
           - map_id
-          - updated_at
+          - port
+          - room_id
+          - round_id
+          - status
         filter: {}
         allow_aggregations: true
     - role: student
       permission:
         columns:
-          - status
-          - result
-          - created_at
-          - room_id
           - contest_id
-          - port
-          - round_id
+          - created_at
           - map_id
-          - updated_at
+          - port
+          - room_id
+          - round_id
+          - status
         filter: {}
         allow_aggregations: true
     - role: teacher
       permission:
         columns:
-          - status
-          - result
-          - created_at
-          - room_id
           - contest_id
-          - port
-          - round_id
+          - created_at
           - map_id
-          - updated_at
+          - port
+          - room_id
+          - round_id
+          - status
         filter: {}
         allow_aggregations: true
     - role: user
       permission:
         columns:
-          - status
-          - result
-          - created_at
-          - room_id
           - contest_id
-          - port
-          - round_id
+          - created_at
           - map_id
-          - updated_at
+          - port
+          - room_id
+          - round_id
+          - status
         filter: {}
         allow_aggregations: true
 - table:
@@ -1420,14 +1282,8 @@
         check: {}
         columns:
           - contest_id
-          - contest_score
           - created_at
           - invited_code
-          - member_num
-          - score
-          - status
-          - status2
-          - submitted_code_num
           - team_id
           - team_intro
           - team_leader_uuid
@@ -1438,14 +1294,8 @@
         check: {}
         columns:
           - contest_id
-          - contest_score
           - created_at
           - invited_code
-          - member_num
-          - score
-          - status
-          - status2
-          - submitted_code_num
           - team_id
           - team_intro
           - team_leader_uuid
@@ -1456,14 +1306,8 @@
         check: {}
         columns:
           - contest_id
-          - contest_score
           - created_at
           - invited_code
-          - member_num
-          - score
-          - status
-          - status2
-          - submitted_code_num
           - team_id
           - team_intro
           - team_leader_uuid
@@ -1474,14 +1318,8 @@
         check: {}
         columns:
           - contest_id
-          - contest_score
           - created_at
           - invited_code
-          - member_num
-          - score
-          - status
-          - status2
-          - submitted_code_num
           - team_id
           - team_intro
           - team_leader_uuid
@@ -1492,14 +1330,8 @@
       permission:
         columns:
           - contest_id
-          - contest_score
           - created_at
           - invited_code
-          - member_num
-          - score
-          - status
-          - status2
-          - submitted_code_num
           - team_id
           - team_intro
           - team_leader_uuid
@@ -1511,14 +1343,8 @@
       permission:
         columns:
           - contest_id
-          - contest_score
           - created_at
           - invited_code
-          - member_num
-          - score
-          - status
-          - status2
-          - submitted_code_num
           - team_id
           - team_intro
           - team_leader_uuid
@@ -1530,14 +1356,8 @@
       permission:
         columns:
           - contest_id
-          - contest_score
           - created_at
           - invited_code
-          - member_num
-          - score
-          - status
-          - status2
-          - submitted_code_num
           - team_id
           - team_intro
           - team_leader_uuid
@@ -1549,14 +1369,8 @@
       permission:
         columns:
           - contest_id
-          - contest_score
           - created_at
           - invited_code
-          - member_num
-          - score
-          - status
-          - status2
-          - submitted_code_num
           - team_id
           - team_intro
           - team_leader_uuid
@@ -1568,14 +1382,8 @@
       permission:
         columns:
           - contest_id
-          - contest_score
           - created_at
           - invited_code
-          - member_num
-          - score
-          - status
-          - status2
-          - submitted_code_num
           - team_id
           - team_intro
           - team_leader_uuid
@@ -1587,20 +1395,14 @@
     - role: counselor
       permission:
         columns:
-          - submitted_code_num
-          - contest_score
-          - invited_code
-          - score
-          - status
-          - status2
-          - team_intro
-          - team_name
-          - created_at
-          - updated_at
           - contest_id
+          - created_at
+          - invited_code
           - team_id
+          - team_intro
           - team_leader_uuid
-          - member_num
+          - team_name
+          - updated_at
         filter:
           contest_team_members:
             user_uuid:
@@ -1609,20 +1411,14 @@
     - role: student
       permission:
         columns:
-          - submitted_code_num
-          - contest_score
-          - invited_code
-          - score
-          - status
-          - status2
-          - team_intro
-          - team_name
-          - created_at
-          - updated_at
           - contest_id
+          - created_at
+          - invited_code
           - team_id
+          - team_intro
           - team_leader_uuid
-          - member_num
+          - team_name
+          - updated_at
         filter:
           contest_team_members:
             user_uuid:
@@ -1631,20 +1427,14 @@
     - role: teacher
       permission:
         columns:
-          - submitted_code_num
-          - contest_score
-          - invited_code
-          - score
-          - status
-          - status2
-          - team_intro
-          - team_name
-          - created_at
-          - updated_at
           - contest_id
+          - created_at
+          - invited_code
           - team_id
+          - team_intro
           - team_leader_uuid
-          - member_num
+          - team_name
+          - updated_at
         filter:
           contest_team_members:
             user_uuid:
@@ -1653,20 +1443,14 @@
     - role: user
       permission:
         columns:
-          - submitted_code_num
-          - contest_score
-          - invited_code
-          - score
-          - status
-          - status2
-          - team_intro
-          - team_name
-          - created_at
-          - updated_at
           - contest_id
+          - created_at
+          - invited_code
           - team_id
+          - team_intro
           - team_leader_uuid
-          - member_num
+          - team_name
+          - updated_at
         filter:
           contest_team_members:
             user_uuid:
@@ -1765,23 +1549,13 @@
     - role: anonymous
       permission:
         columns:
+          - code_id
           - code_name
           - compile_status
-          - language
           - created_at
-          - code_id
+          - language
           - team_id
-        filter:
-          _or:
-            - contest_team:
-                contest_team_members:
-                  user_uuid:
-                    _eq: X-Hasura-User-Id
-            - contest_team:
-                contest:
-                  contest_managers:
-                    user_uuid:
-                      _eq: X-Hasura-User-Id
+        filter: {}
         allow_aggregations: true
     - role: counselor
       permission:
@@ -1792,17 +1566,7 @@
           - created_at
           - language
           - team_id
-        filter:
-          _or:
-            - contest_team:
-                contest_team_members:
-                  user_uuid:
-                    _eq: X-Hasura-User-Id
-            - contest_team:
-                contest:
-                  contest_managers:
-                    user_uuid:
-                      _eq: X-Hasura-User-Id
+        filter: {}
         allow_aggregations: true
     - role: student
       permission:
@@ -1813,17 +1577,7 @@
           - created_at
           - language
           - team_id
-        filter:
-          _or:
-            - contest_team:
-                contest_team_members:
-                  user_uuid:
-                    _eq: X-Hasura-User-Id
-            - contest_team:
-                contest:
-                  contest_managers:
-                    user_uuid:
-                      _eq: X-Hasura-User-Id
+        filter: {}
         allow_aggregations: true
     - role: teacher
       permission:
@@ -1834,17 +1588,7 @@
           - created_at
           - language
           - team_id
-        filter:
-          _or:
-            - contest_team:
-                contest_team_members:
-                  user_uuid:
-                    _eq: X-Hasura-User-Id
-            - contest_team:
-                contest:
-                  contest_managers:
-                    user_uuid:
-                      _eq: X-Hasura-User-Id
+        filter: {}
         allow_aggregations: true
     - role: user
       permission:
@@ -1855,17 +1599,7 @@
           - created_at
           - language
           - team_id
-        filter:
-          _or:
-            - contest_team:
-                contest_team_members:
-                  user_uuid:
-                    _eq: X-Hasura-User-Id
-            - contest_team:
-                contest:
-                  contest_managers:
-                    user_uuid:
-                      _eq: X-Hasura-User-Id
+        filter: {}
         allow_aggregations: true
   update_permissions:
     - role: counselor
@@ -2204,7 +1938,11 @@
   select_permissions:
     - role: anonymous
       permission:
-        columns: []
+        columns:
+          - player
+          - role
+          - code_id
+          - team_id
         filter: {}
         allow_aggregations: true
     - role: counselor
@@ -2232,11 +1970,7 @@
           - role
           - code_id
           - team_id
-        filter:
-          contest_team:
-            contest_team_members:
-              user_uuid:
-                _eq: X-Hasura-User-Id
+        filter: {}
         allow_aggregations: true
     - role: user
       permission:
@@ -2245,11 +1979,7 @@
           - role
           - code_id
           - team_id
-        filter:
-          contest_team:
-            contest_team_members:
-              user_uuid:
-                _eq: X-Hasura-User-Id
+        filter: {}
         allow_aggregations: true
   update_permissions:
     - role: counselor
@@ -2565,6 +2295,461 @@
             contest_managers:
               user_uuid:
                 _eq: X-Hasura-User-Id
+- table:
+    name: course
+    schema: public
+  array_relationships:
+    - name: course_comments
+      using:
+        foreign_key_constraint_on:
+          column: course_id
+          table:
+            name: course_comment
+            schema: public
+    - name: course_infos
+      using:
+        foreign_key_constraint_on:
+          column: course_id
+          table:
+            name: course_info
+            schema: public
+    - name: course_ratings
+      using:
+        foreign_key_constraint_on:
+          column: course_id
+          table:
+            name: course_rating
+            schema: public
+  select_permissions:
+    - role: counselor
+      permission:
+        columns:
+          - year
+          - code
+          - fullname
+          - language
+          - name
+          - professor
+          - semester
+          - type
+          - uuid
+        filter: {}
+    - role: student
+      permission:
+        columns:
+          - year
+          - code
+          - fullname
+          - language
+          - name
+          - professor
+          - semester
+          - type
+          - uuid
+        filter: {}
+    - role: teacher
+      permission:
+        columns:
+          - year
+          - code
+          - fullname
+          - language
+          - name
+          - professor
+          - semester
+          - type
+          - uuid
+        filter: {}
+- table:
+    name: course_comment
+    schema: public
+  object_relationships:
+    - name: course
+      using:
+        foreign_key_constraint_on: course_id
+    - name: user
+      using:
+        foreign_key_constraint_on: user_uuid
+  insert_permissions:
+    - role: counselor
+      permission:
+        check: {}
+        columns:
+          - comment
+          - created_at
+          - updated_at
+          - course_id
+          - user_uuid
+          - uuid
+    - role: student
+      permission:
+        check: {}
+        columns:
+          - comment
+          - created_at
+          - updated_at
+          - course_id
+          - user_uuid
+          - uuid
+    - role: teacher
+      permission:
+        check: {}
+        columns:
+          - comment
+          - created_at
+          - updated_at
+          - course_id
+          - user_uuid
+          - uuid
+  select_permissions:
+    - role: counselor
+      permission:
+        columns:
+          - comment
+          - course_id
+          - created_at
+          - like
+          - star
+          - updated_at
+          - user_uuid
+          - uuid
+        filter: {}
+    - role: student
+      permission:
+        columns:
+          - comment
+          - course_id
+          - created_at
+          - like
+          - star
+          - updated_at
+          - user_uuid
+          - uuid
+        filter: {}
+    - role: teacher
+      permission:
+        columns:
+          - comment
+          - created_at
+          - updated_at
+          - course_id
+          - user_uuid
+          - uuid
+        filter: {}
+  update_permissions:
+    - role: counselor
+      permission:
+        columns:
+          - comment
+          - created_at
+          - updated_at
+          - course_id
+          - user_uuid
+          - uuid
+        filter: {}
+        check: {}
+    - role: student
+      permission:
+        columns:
+          - comment
+          - created_at
+          - updated_at
+          - course_id
+          - user_uuid
+          - uuid
+        filter: {}
+        check: {}
+    - role: teacher
+      permission:
+        columns:
+          - comment
+          - created_at
+          - updated_at
+          - course_id
+          - user_uuid
+          - uuid
+        filter: {}
+        check: {}
+  delete_permissions:
+    - role: counselor
+      permission:
+        backend_only: false
+        filter: {}
+    - role: student
+      permission:
+        backend_only: false
+        filter: {}
+    - role: teacher
+      permission:
+        backend_only: false
+        filter: {}
+- table:
+    name: course_info
+    schema: public
+  object_relationships:
+    - name: course
+      using:
+        foreign_key_constraint_on: course_id
+  insert_permissions:
+    - role: counselor
+      permission:
+        check: {}
+        columns:
+          - key
+          - value
+          - course_id
+    - role: student
+      permission:
+        check: {}
+        columns:
+          - key
+          - value
+          - course_id
+    - role: teacher
+      permission:
+        check: {}
+        columns:
+          - key
+          - value
+          - course_id
+  select_permissions:
+    - role: counselor
+      permission:
+        columns:
+          - course_id
+          - key
+          - value
+        filter: {}
+    - role: student
+      permission:
+        columns:
+          - course_id
+          - key
+          - value
+        filter: {}
+    - role: teacher
+      permission:
+        columns:
+          - course_id
+          - key
+          - value
+        filter: {}
+  update_permissions:
+    - role: counselor
+      permission:
+        columns:
+          - key
+          - value
+          - course_id
+        filter: {}
+        check: {}
+    - role: student
+      permission:
+        columns:
+          - key
+          - value
+          - course_id
+        filter: {}
+        check: {}
+    - role: teacher
+      permission:
+        columns:
+          - key
+          - value
+          - course_id
+        filter: {}
+        check: {}
+  delete_permissions:
+    - role: counselor
+      permission:
+        backend_only: false
+        filter: {}
+    - role: student
+      permission:
+        backend_only: false
+        filter: {}
+    - role: teacher
+      permission:
+        backend_only: false
+        filter: {}
+- table:
+    name: course_manager
+    schema: public
+  object_relationships:
+    - name: user
+      using:
+        foreign_key_constraint_on: user_uuid
+  select_permissions:
+    - role: counselor
+      permission:
+        columns:
+          - user_uuid
+        filter: {}
+    - role: student
+      permission:
+        columns:
+          - user_uuid
+        filter: {}
+    - role: teacher
+      permission:
+        columns:
+          - user_uuid
+        filter: {}
+- table:
+    name: course_rating
+    schema: public
+  object_relationships:
+    - name: course
+      using:
+        foreign_key_constraint_on: course_id
+    - name: user
+      using:
+        foreign_key_constraint_on: user_uuid
+  insert_permissions:
+    - role: counselor
+      permission:
+        check: {}
+        columns:
+          - dim1
+          - dim2
+          - dim3
+          - dim4
+          - dim5
+          - dim6
+          - created_at
+          - updated_at
+          - course_id
+          - user_uuid
+    - role: student
+      permission:
+        check: {}
+        columns:
+          - dim1
+          - dim2
+          - dim3
+          - dim4
+          - dim5
+          - dim6
+          - created_at
+          - updated_at
+          - course_id
+          - user_uuid
+    - role: teacher
+      permission:
+        check: {}
+        columns:
+          - dim1
+          - dim2
+          - dim3
+          - dim4
+          - dim5
+          - dim6
+          - created_at
+          - updated_at
+          - course_id
+          - user_uuid
+  select_permissions:
+    - role: counselor
+      permission:
+        columns:
+          - dim1
+          - dim2
+          - dim3
+          - dim4
+          - dim5
+          - dim6
+          - created_at
+          - updated_at
+          - course_id
+          - user_uuid
+        filter: {}
+    - role: student
+      permission:
+        columns:
+          - dim1
+          - dim2
+          - dim3
+          - dim4
+          - dim5
+          - dim6
+          - created_at
+          - updated_at
+          - course_id
+          - user_uuid
+        filter: {}
+    - role: teacher
+      permission:
+        columns:
+          - dim1
+          - dim2
+          - dim3
+          - dim4
+          - dim5
+          - dim6
+          - created_at
+          - updated_at
+          - course_id
+          - user_uuid
+        filter: {}
+  update_permissions:
+    - role: counselor
+      permission:
+        columns:
+          - dim1
+          - dim2
+          - dim3
+          - dim4
+          - dim5
+          - dim6
+          - created_at
+          - updated_at
+          - course_id
+          - user_uuid
+        filter: {}
+        check: {}
+    - role: student
+      permission:
+        columns:
+          - dim1
+          - dim2
+          - dim3
+          - dim4
+          - dim5
+          - dim6
+          - created_at
+          - updated_at
+          - course_id
+          - user_uuid
+        filter: {}
+        check: {}
+    - role: teacher
+      permission:
+        columns:
+          - dim1
+          - dim2
+          - dim3
+          - dim4
+          - dim5
+          - dim6
+          - created_at
+          - updated_at
+          - course_id
+          - user_uuid
+        filter: {}
+        check: {}
+  delete_permissions:
+    - role: counselor
+      permission:
+        backend_only: false
+        filter: {}
+    - role: student
+      permission:
+        backend_only: false
+        filter: {}
+    - role: teacher
+      permission:
+        backend_only: false
+        filter: {}
 - table:
     name: department
     schema: public
@@ -3643,23 +3828,6 @@
           - name
           - salutation
           - type
-        filter: {}
-- table:
-    name: share_course
-    schema: public
-  select_permissions:
-    - role: student
-      permission:
-        columns:
-          - year
-          - code
-          - fullname
-          - language
-          - name
-          - professor
-          - semester
-          - type
-          - uuid
         filter: {}
 - table:
     name: users

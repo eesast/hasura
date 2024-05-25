@@ -1,0 +1,2 @@
+CREATE TABLE "public"."course_comment" ("uuid" uuid NOT NULL DEFAULT gen_random_uuid(), "course" uuid NOT NULL, "user" uuid NOT NULL, "comment" text NOT NULL, "created_at" timestamptz NOT NULL DEFAULT now(), PRIMARY KEY ("uuid") , FOREIGN KEY ("course") REFERENCES "public"."course"("uuid") ON UPDATE restrict ON DELETE cascade, FOREIGN KEY ("user") REFERENCES "public"."users"("uuid") ON UPDATE restrict ON DELETE cascade, UNIQUE ("uuid"));COMMENT ON TABLE "public"."course_comment" IS E'用户评论表';
+CREATE EXTENSION IF NOT EXISTS pgcrypto;
