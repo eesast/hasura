@@ -1,0 +1,1 @@
+CREATE TABLE "public"."course_comment_star" ("comment_uuid" uuid NOT NULL, "user_uuid" uuid NOT NULL, PRIMARY KEY ("comment_uuid","user_uuid") , FOREIGN KEY ("comment_uuid") REFERENCES "public"."course_comment"("uuid") ON UPDATE restrict ON DELETE restrict, FOREIGN KEY ("user_uuid") REFERENCES "public"."users"("uuid") ON UPDATE restrict ON DELETE restrict);
