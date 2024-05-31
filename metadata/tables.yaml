@@ -2309,10 +2309,11 @@
         check: {}
         columns:
           - comment
-          - created_at
-          - updated_at
           - course_id
+          - created_at
+          - deleted
           - parent_uuid
+          - updated_at
           - user_uuid
           - uuid
     - role: student
@@ -2320,10 +2321,11 @@
         check: {}
         columns:
           - comment
-          - created_at
-          - updated_at
           - course_id
+          - created_at
+          - deleted
           - parent_uuid
+          - updated_at
           - user_uuid
           - uuid
     - role: teacher
@@ -2331,10 +2333,11 @@
         check: {}
         columns:
           - comment
-          - created_at
-          - updated_at
           - course_id
+          - created_at
+          - deleted
           - parent_uuid
+          - updated_at
           - user_uuid
           - uuid
   select_permissions:
@@ -2342,10 +2345,11 @@
       permission:
         columns:
           - comment
-          - created_at
-          - updated_at
           - course_id
+          - created_at
+          - deleted
           - parent_uuid
+          - updated_at
           - user_uuid
           - uuid
         filter: {}
@@ -2354,10 +2358,11 @@
       permission:
         columns:
           - comment
-          - created_at
-          - updated_at
           - course_id
+          - created_at
+          - deleted
           - parent_uuid
+          - updated_at
           - user_uuid
           - uuid
         filter: {}
@@ -2368,6 +2373,7 @@
           - comment
           - course_id
           - created_at
+          - deleted
           - parent_uuid
           - updated_at
           - user_uuid
@@ -2379,10 +2385,11 @@
       permission:
         columns:
           - comment
-          - created_at
-          - updated_at
           - course_id
+          - created_at
+          - deleted
           - parent_uuid
+          - updated_at
           - user_uuid
           - uuid
         filter: {}
@@ -2391,10 +2398,11 @@
       permission:
         columns:
           - comment
-          - created_at
-          - updated_at
           - course_id
+          - created_at
+          - deleted
           - parent_uuid
+          - updated_at
           - user_uuid
           - uuid
         filter: {}
@@ -2403,10 +2411,11 @@
       permission:
         columns:
           - comment
-          - created_at
-          - updated_at
           - course_id
+          - created_at
+          - deleted
           - parent_uuid
+          - updated_at
           - user_uuid
           - uuid
         filter: {}
