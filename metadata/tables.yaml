@@ -3403,6 +3403,60 @@
 - table:
     name: mentor_time
     schema: public
+  insert_permissions:
+    - role: counselor
+      permission:
+        check: {}
+        columns:
+          - activateIn
+          - end_A
+          - end_B
+          - end_C
+          - end_D
+          - end_E
+          - start_A
+          - start_B
+          - start_C
+          - start_D
+          - start_E
+  select_permissions:
+    - role: counselor
+      permission:
+        columns:
+          - activateIn
+          - end_A
+          - end_B
+          - end_C
+          - end_D
+          - end_E
+          - start_A
+          - start_B
+          - start_C
+          - start_D
+          - start_E
+        filter: {}
+  update_permissions:
+    - role: counselor
+      permission:
+        columns:
+          - start_A
+          - end_A
+          - start_B
+          - end_B
+          - start_C
+          - end_C
+          - start_D
+          - end_D
+          - start_E
+          - end_E
+          - activateIn
+        filter: {}
+        check: {}
+  delete_permissions:
+    - role: counselor
+      permission:
+        backend_only: false
+        filter: {}
 - table:
     name: postgraduate_application
     schema: public
