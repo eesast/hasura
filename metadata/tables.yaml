@@ -3236,60 +3236,6 @@
         - name: x-hasura-action-secret
           value_from_env: ACTION_SECRET
 - table:
-    name: mentor_available
-    schema: public
-  object_relationships:
-    - name: mentor
-      using:
-        foreign_key_constraint_on: mentor_uuid
-  insert_permissions:
-    - role: teacher
-      permission:
-        check:
-          mentor_uuid:
-            _eq: X-Hasura-User-Id
-        columns:
-          - available
-          - mentor_uuid
-  select_permissions:
-    - role: counselor
-      permission:
-        columns:
-          - available
-          - created_at
-          - mentor_uuid
-          - updated_at
-        filter: {}
-    - role: student
-      permission:
-        columns:
-          - available
-          - created_at
-          - mentor_uuid
-          - updated_at
-        filter: {}
-    - role: teacher
-      permission:
-        columns:
-          - available
-          - created_at
-          - mentor_uuid
-          - updated_at
-        filter:
-          mentor_uuid:
-            _eq: X-Hasura-User-Id
-  update_permissions:
-    - role: teacher
-      permission:
-        columns:
-          - available
-        filter:
-          mentor_uuid:
-            _eq: X-Hasura-User-Id
-        check:
-          mentor_uuid:
-            _eq: X-Hasura-User-Id
-- table:
     name: mentor_info
     schema: public
   object_relationships:
@@ -3982,14 +3928,6 @@
 - table:
     name: users
     schema: public
-  object_relationships:
-    - name: mentor_available
-      using:
-        foreign_key_constraint_on:
-          column: mentor_uuid
-          table:
-            name: mentor_available
-            schema: public
   array_relationships:
     - name: contest_team_members
       using:
@@ -3997,20 +3935,6 @@
           column: user_uuid
           table:
             name: contest_team_member
-            schema: public
-    - name: mentor_application_as_mentor
-      using:
-        foreign_key_constraint_on:
-          column: mentor_uuid
-          table:
-            name: mentor_application
-            schema: public
-    - name: mentor_application_as_student
-      using:
-        foreign_key_constraint_on:
-          column: student_uuid
-          table:
-            name: mentor_application
             schema: public
   select_permissions:
     - role: anonymous
