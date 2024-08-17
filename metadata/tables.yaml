@@ -3250,7 +3250,6 @@
             _eq: X-Hasura-User-Id
         columns:
           - available
-          - max_applicant
           - mentor_uuid
   select_permissions:
     - role: counselor
@@ -3258,7 +3257,6 @@
         columns:
           - available
           - created_at
-          - max_applicant
           - mentor_uuid
           - updated_at
         filter: {}
@@ -3267,7 +3265,6 @@
         columns:
           - available
           - created_at
-          - max_applicant
           - mentor_uuid
           - updated_at
         filter: {}
@@ -3276,7 +3273,6 @@
         columns:
           - available
           - created_at
-          - max_applicant
           - mentor_uuid
           - updated_at
         filter:
@@ -3287,7 +3283,6 @@
       permission:
         columns:
           - available
-          - max_applicant
         filter:
           mentor_uuid:
             _eq: X-Hasura-User-Id
