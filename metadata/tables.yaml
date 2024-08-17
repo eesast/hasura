@@ -2905,6 +2905,43 @@
           - name
         filter: {}
 - table:
+    name: freshman
+    schema: public
+  insert_permissions:
+    - role: counselor
+      permission:
+        check: {}
+        columns:
+          - student_no
+          - realname
+          - year
+          - uuid
+  select_permissions:
+    - role: counselor
+      permission:
+        columns:
+          - year
+          - realname
+          - student_no
+          - uuid
+        filter: {}
+        allow_aggregations: true
+  update_permissions:
+    - role: counselor
+      permission:
+        columns:
+          - year
+          - realname
+          - student_no
+          - uuid
+        filter: {}
+        check: {}
+  delete_permissions:
+    - role: counselor
+      permission:
+        backend_only: false
+        filter: {}
+- table:
     name: honor_application
     schema: public
   object_relationships:
@@ -3085,6 +3122,7 @@
           - status
           - student_uuid
           - updated_at
+          - year
     - role: student
       permission:
         check:
@@ -3094,6 +3132,7 @@
           - mentor_uuid
           - statement
           - student_uuid
+          - year
   select_permissions:
     - role: counselor
       permission:
@@ -3106,6 +3145,7 @@
           - status
           - student_uuid
           - updated_at
+          - year
         filter: {}
         allow_aggregations: true
     - role: student
@@ -3119,6 +3159,7 @@
           - status
           - student_uuid
           - updated_at
+          - year
         filter: {}
         allow_aggregations: true
     - role: teacher
@@ -3132,9 +3173,9 @@
           - status
           - student_uuid
           - updated_at
-        filter:
-          mentor_uuid:
-            _eq: X-Hasura-User-Id
+          - year
+        filter: {}
+        allow_aggregations: true
   update_permissions:
     - role: counselor
       permission:
@@ -3147,6 +3188,7 @@
           - status
           - student_uuid
           - updated_at
+          - year
         filter: {}
         check: {}
     - role: student
@@ -3208,6 +3250,7 @@
             _eq: X-Hasura-User-Id
         columns:
           - available
+          - max_applicant
           - mentor_uuid
   select_permissions:
     - role: counselor
@@ -3215,6 +3258,7 @@
         columns:
           - available
           - created_at
+          - max_applicant
           - mentor_uuid
           - updated_at
         filter: {}
@@ -3223,6 +3267,7 @@
         columns:
           - available
           - created_at
+          - max_applicant
           - mentor_uuid
           - updated_at
         filter: {}
@@ -3231,6 +3276,7 @@
         columns:
           - available
           - created_at
+          - max_applicant
           - mentor_uuid
           - updated_at
         filter:
@@ -3241,6 +3287,7 @@
       permission:
         columns:
           - available
+          - max_applicant
         filter:
           mentor_uuid:
             _eq: X-Hasura-User-Id
@@ -3259,82 +3306,98 @@
       permission:
         check: {}
         columns:
+          - available
+          - max_applicants
+          - created_at
+          - updated_at
+          - mentor_uuid
           - achievement
           - background
-          - created_at
           - field
           - intro
-          - mentor_uuid
-          - updated_at
     - role: teacher
       permission:
         check:
           mentor_uuid:
             _eq: X-Hasura-User-Id
         columns:
+          - available
+          - max_applicants
+          - created_at
+          - updated_at
+          - mentor_uuid
           - achievement
           - background
-          - created_at
           - field
           - intro
-          - mentor_uuid
-          - updated_at
   select_permissions:
     - role: counselor
       permission:
         columns:
+          - available
+          - max_applicants
+          - created_at
+          - updated_at
+          - mentor_uuid
           - achievement
           - background
-          - created_at
           - field
           - intro
-          - mentor_uuid
-          - updated_at
         filter: {}
         allow_aggregations: true
     - role: student
       permission:
         columns:
+          - available
+          - max_applicants
+          - created_at
+          - updated_at
+          - mentor_uuid
           - achievement
           - background
           - field
           - intro
-          - mentor_uuid
         filter: {}
+        allow_aggregations: true
     - role: teacher
       permission:
         columns:
+          - available
+          - max_applicants
+          - created_at
+          - updated_at
+          - mentor_uuid
           - achievement
           - background
-          - created_at
           - field
           - intro
-          - mentor_uuid
-          - updated_at
-        filter:
-          mentor_uuid:
-            _eq: X-Hasura-User-Id
+        filter: {}
+        allow_aggregations: true
   update_permissions:
     - role: counselor
       permission:
         columns:
+          - available
+          - max_applicants
+          - created_at
+          - updated_at
+          - mentor_uuid
           - achievement
           - background
-          - created_at
           - field
           - intro
-          - mentor_uuid
-          - updated_at
         filter: {}
         check: {}
     - role: teacher
       permission:
         columns:
           - achievement
+          - available
           - background
           - created_at
           - field
           - intro
+          - max_applicants
           - updated_at
         filter:
           mentor_uuid:
@@ -3421,6 +3484,36 @@
           - start_E
   select_permissions:
     - role: counselor
+      permission:
+        columns:
+          - activateIn
+          - end_A
+          - end_B
+          - end_C
+          - end_D
+          - end_E
+          - start_A
+          - start_B
+          - start_C
+          - start_D
+          - start_E
+        filter: {}
+    - role: student
+      permission:
+        columns:
+          - activateIn
+          - end_A
+          - end_B
+          - end_C
+          - end_D
+          - end_E
+          - start_A
+          - start_B
+          - start_C
+          - start_D
+          - start_E
+        filter: {}
+    - role: teacher
       permission:
         columns:
           - activateIn
