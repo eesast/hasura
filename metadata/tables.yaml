@@ -2965,6 +2965,7 @@
           - statement
           - status
           - student_uuid
+          - year
   select_permissions:
     - role: counselor
       permission:
@@ -2977,6 +2978,7 @@
           - status
           - student_uuid
           - updated_at
+          - year
         filter: {}
     - role: student
       permission:
@@ -2989,6 +2991,7 @@
           - status
           - student_uuid
           - updated_at
+          - year
         filter:
           student_uuid:
             _eq: X-Hasura-User-Id
@@ -2997,6 +3000,7 @@
       permission:
         columns:
           - status
+          - year
         filter: {}
         check: {}
     - role: student
@@ -3007,6 +3011,7 @@
           - statement
           - status
           - student_uuid
+          - year
         filter:
           _and:
             - student_uuid:
