@@ -2312,6 +2312,7 @@
           - course_id
           - created_at
           - deleted
+          - display
           - parent_uuid
           - updated_at
           - user_uuid
@@ -2324,6 +2325,7 @@
           - course_id
           - created_at
           - deleted
+          - display
           - parent_uuid
           - updated_at
           - user_uuid
@@ -2336,6 +2338,7 @@
           - course_id
           - created_at
           - deleted
+          - display
           - parent_uuid
           - updated_at
           - user_uuid
@@ -2348,6 +2351,7 @@
           - course_id
           - created_at
           - deleted
+          - display
           - parent_uuid
           - updated_at
           - user_uuid
@@ -2361,6 +2365,7 @@
           - course_id
           - created_at
           - deleted
+          - display
           - parent_uuid
           - updated_at
           - user_uuid
@@ -2374,6 +2379,7 @@
           - course_id
           - created_at
           - deleted
+          - display
           - parent_uuid
           - updated_at
           - user_uuid
@@ -2388,6 +2394,7 @@
           - course_id
           - created_at
           - deleted
+          - display
           - parent_uuid
           - updated_at
           - user_uuid
@@ -2401,6 +2408,7 @@
           - course_id
           - created_at
           - deleted
+          - display
           - parent_uuid
           - updated_at
           - user_uuid
@@ -2414,6 +2422,7 @@
           - course_id
           - created_at
           - deleted
+          - display
           - parent_uuid
           - updated_at
           - user_uuid
