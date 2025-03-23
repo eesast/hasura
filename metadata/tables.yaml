@@ -2312,7 +2312,6 @@
           - course_id
           - created_at
           - deleted
-          - display
           - parent_uuid
           - updated_at
           - user_uuid
@@ -2325,7 +2324,6 @@
           - course_id
           - created_at
           - deleted
-          - display
           - parent_uuid
           - updated_at
           - user_uuid
@@ -2338,7 +2336,6 @@
           - course_id
           - created_at
           - deleted
-          - display
           - parent_uuid
           - updated_at
           - user_uuid
@@ -2351,7 +2348,6 @@
           - course_id
           - created_at
           - deleted
-          - display
           - parent_uuid
           - updated_at
           - user_uuid
@@ -2365,7 +2361,6 @@
           - course_id
           - created_at
           - deleted
-          - display
           - parent_uuid
           - updated_at
           - user_uuid
@@ -2379,7 +2374,6 @@
           - course_id
           - created_at
           - deleted
-          - display
           - parent_uuid
           - updated_at
           - user_uuid
@@ -2394,7 +2388,6 @@
           - course_id
           - created_at
           - deleted
-          - display
           - parent_uuid
           - updated_at
           - user_uuid
@@ -2408,7 +2401,6 @@
           - course_id
           - created_at
           - deleted
-          - display
           - parent_uuid
           - updated_at
           - user_uuid
@@ -2422,7 +2414,6 @@
           - course_id
           - created_at
           - deleted
-          - display
           - parent_uuid
           - updated_at
           - user_uuid
@@ -2921,28 +2912,31 @@
       permission:
         check: {}
         columns:
-          - student_no
+          - is_member
           - realname
-          - year
+          - student_no
           - uuid
+          - year
   select_permissions:
     - role: counselor
       permission:
         columns:
-          - year
+          - is_member
           - realname
           - student_no
           - uuid
+          - year
         filter: {}
         allow_aggregations: true
   update_permissions:
     - role: counselor
       permission:
         columns:
-          - year
+          - is_member
           - realname
           - student_no
           - uuid
+          - year
         filter: {}
         check: {}
   delete_permissions:
@@ -3126,7 +3120,9 @@
       permission:
         check: {}
         columns:
+          - chat_confirm
           - chat_status
+          - chat_time
           - created_at
           - id
           - mentor_uuid
@@ -3149,7 +3145,9 @@
     - role: counselor
       permission:
         columns:
+          - chat_confirm
           - chat_status
+          - chat_time
           - created_at
           - id
           - mentor_uuid
@@ -3163,7 +3161,9 @@
     - role: student
       permission:
         columns:
+          - chat_confirm
           - chat_status
+          - chat_time
           - created_at
           - id
           - mentor_uuid
@@ -3177,7 +3177,9 @@
     - role: teacher
       permission:
         columns:
+          - chat_confirm
           - chat_status
+          - chat_time
           - created_at
           - id
           - mentor_uuid
@@ -3192,7 +3194,9 @@
     - role: counselor
       permission:
         columns:
+          - chat_confirm
           - chat_status
+          - chat_time
           - created_at
           - id
           - mentor_uuid
@@ -3207,6 +3211,7 @@
       permission:
         columns:
           - chat_status
+          - chat_time
           - statement
         filter:
           student_uuid:
@@ -3217,6 +3222,7 @@
     - role: teacher
       permission:
         columns:
+          - chat_confirm
           - status
         filter:
           mentor_uuid:
@@ -3259,86 +3265,98 @@
       permission:
         check: {}
         columns:
-          - available
-          - max_applicants
-          - created_at
-          - updated_at
-          - mentor_uuid
           - achievement
+          - available
           - background
+          - created_at
+          - dialogue_type
           - field
           - intro
+          - is_member
+          - max_applicants
+          - mentor_uuid
+          - updated_at
     - role: teacher
       permission:
         check:
           mentor_uuid:
             _eq: X-Hasura-User-Id
         columns:
-          - available
-          - max_applicants
-          - created_at
-          - updated_at
-          - mentor_uuid
           - achievement
+          - available
           - background
+          - created_at
+          - dialogue_type
           - field
           - intro
+          - is_member
+          - max_applicants
+          - mentor_uuid
+          - updated_at
   select_permissions:
     - role: counselor
       permission:
         columns:
-          - available
-          - max_applicants
-          - created_at
-          - updated_at
-          - mentor_uuid
           - achievement
+          - available
           - background
+          - created_at
+          - dialogue_type
           - field
           - intro
+          - is_member
+          - max_applicants
+          - mentor_uuid
+          - updated_at
         filter: {}
         allow_aggregations: true
     - role: student
       permission:
         columns:
-          - available
-          - max_applicants
-          - created_at
-          - updated_at
-          - mentor_uuid
           - achievement
+          - available
           - background
+          - created_at
+          - dialogue_type
           - field
           - intro
+          - is_member
+          - max_applicants
+          - mentor_uuid
+          - updated_at
         filter: {}
         allow_aggregations: true
     - role: teacher
       permission:
         columns:
-          - available
-          - max_applicants
-          - created_at
-          - updated_at
-          - mentor_uuid
           - achievement
+          - available
           - background
+          - created_at
+          - dialogue_type
           - field
           - intro
+          - is_member
+          - max_applicants
+          - mentor_uuid
+          - updated_at
         filter: {}
         allow_aggregations: true
   update_permissions:
     - role: counselor
       permission:
         columns:
-          - available
-          - max_applicants
-          - created_at
-          - updated_at
-          - mentor_uuid
           - achievement
+          - available
           - background
+          - created_at
+          - dialogue_type
           - field
           - intro
+          - is_member
+          - max_applicants
+          - mentor_uuid
+          - updated_at
         filter: {}
         check: {}
     - role: teacher
@@ -3348,8 +3366,10 @@
           - available
           - background
           - created_at
+          - dialogue_type
           - field
           - intro
+          - is_member
           - max_applicants
           - updated_at
         filter:
