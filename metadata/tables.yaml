@@ -1227,6 +1227,7 @@
           - team_intro
           - team_leader_uuid
           - team_name
+          - team_sf_code
           - updated_at
     - role: teacher
       permission:
@@ -1251,6 +1252,7 @@
           - team_intro
           - team_leader_uuid
           - team_name
+          - team_sf_code
           - updated_at
   select_permissions:
     - role: anonymous
@@ -1289,6 +1291,7 @@
           - team_intro
           - team_leader_uuid
           - team_name
+          - team_sf_code
           - updated_at
         filter: {}
         allow_aggregations: true
@@ -1315,6 +1318,7 @@
           - team_intro
           - team_leader_uuid
           - team_name
+          - team_sf_code
           - updated_at
         filter: {}
         allow_aggregations: true
@@ -1345,6 +1349,7 @@
           - team_intro
           - team_leader_uuid
           - team_name
+          - team_sf_code
           - updated_at
         filter:
           contest_team_members:
@@ -1377,6 +1382,7 @@
           - team_intro
           - team_leader_uuid
           - team_name
+          - team_sf_code
           - updated_at
         filter:
           contest_team_members:
