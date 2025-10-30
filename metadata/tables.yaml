@@ -1,4 +1,7 @@
 - table:
+    name: classes
+    schema: public
+- table:
     name: contest
     schema: public
   array_relationships:
@@ -485,7 +488,6 @@
   delete_permissions:
     - role: counselor
       permission:
-        backend_only: false
         filter:
           contest:
             contest_managers:
@@ -493,7 +495,6 @@
                 _eq: X-Hasura-User-Id
     - role: student
       permission:
-        backend_only: false
         filter:
           contest:
             contest_managers:
@@ -501,7 +502,6 @@
                 _eq: X-Hasura-User-Id
     - role: teacher
       permission:
-        backend_only: false
         filter:
           contest:
             contest_managers:
@@ -509,7 +509,6 @@
                 _eq: X-Hasura-User-Id
     - role: user
       permission:
-        backend_only: false
         filter:
           contest:
             contest_managers:
@@ -723,7 +722,6 @@
   delete_permissions:
     - role: counselor
       permission:
-        backend_only: false
         filter:
           contest:
             contest_managers:
@@ -731,7 +729,6 @@
                 _eq: X-Hasura-User-Id
     - role: student
       permission:
-        backend_only: false
         filter:
           contest:
             contest_managers:
@@ -739,7 +736,6 @@
                 _eq: X-Hasura-User-Id
     - role: teacher
       permission:
-        backend_only: false
         filter:
           contest:
             contest_managers:
@@ -747,7 +743,6 @@
                 _eq: X-Hasura-User-Id
     - role: user
       permission:
-        backend_only: false
         filter:
           contest:
             contest_managers:
@@ -1134,7 +1129,6 @@
   delete_permissions:
     - role: counselor
       permission:
-        backend_only: false
         filter:
           contest:
             contest_managers:
@@ -1142,7 +1136,6 @@
                 _eq: X-Hasura-User-Id
     - role: student
       permission:
-        backend_only: false
         filter:
           contest:
             contest_managers:
@@ -1150,7 +1143,6 @@
                 _eq: X-Hasura-User-Id
     - role: teacher
       permission:
-        backend_only: false
         filter:
           contest:
             contest_managers:
@@ -1158,7 +1150,6 @@
                 _eq: X-Hasura-User-Id
     - role: user
       permission:
-        backend_only: false
         filter:
           contest:
             contest_managers:
@@ -1392,25 +1383,21 @@
   delete_permissions:
     - role: counselor
       permission:
-        backend_only: false
         filter:
           team_leader_uuid:
             _eq: X-Hasura-User-Id
     - role: student
       permission:
-        backend_only: false
         filter:
           team_leader_uuid:
             _eq: X-Hasura-User-Id
     - role: teacher
       permission:
-        backend_only: false
         filter:
           team_leader_uuid:
             _eq: X-Hasura-User-Id
     - role: user
       permission:
-        backend_only: false
         filter:
           team_leader_uuid:
             _eq: X-Hasura-User-Id
@@ -1614,7 +1601,6 @@
   delete_permissions:
     - role: counselor
       permission:
-        backend_only: false
         filter:
           contest_team:
             contest_team_members:
@@ -1622,7 +1608,6 @@
                 _eq: X-Hasura-User-Id
     - role: student
       permission:
-        backend_only: false
         filter:
           contest_team:
             contest_team_members:
@@ -1630,7 +1615,6 @@
                 _eq: X-Hasura-User-Id
     - role: teacher
       permission:
-        backend_only: false
         filter:
           contest_team:
             contest_team_members:
@@ -1638,7 +1622,6 @@
                 _eq: X-Hasura-User-Id
     - role: user
       permission:
-        backend_only: false
         filter:
           contest_team:
             contest_team_members:
@@ -1771,7 +1754,6 @@
   delete_permissions:
     - role: counselor
       permission:
-        backend_only: false
         filter:
           _or:
             - user_uuid:
@@ -1781,7 +1763,6 @@
                   _eq: X-Hasura-User-Id
     - role: student
       permission:
-        backend_only: false
         filter:
           _or:
             - user_uuid:
@@ -1791,7 +1772,6 @@
                   _eq: X-Hasura-User-Id
     - role: teacher
       permission:
-        backend_only: false
         filter:
           _or:
             - user_uuid:
@@ -1801,7 +1781,6 @@
                   _eq: X-Hasura-User-Id
     - role: user
       permission:
-        backend_only: false
         filter:
           _or:
             - user_uuid:
@@ -1986,7 +1965,6 @@
   delete_permissions:
     - role: counselor
       permission:
-        backend_only: false
         filter:
           contest_team:
             contest_team_members:
@@ -1994,7 +1972,6 @@
                 _eq: X-Hasura-User-Id
     - role: student
       permission:
-        backend_only: false
         filter:
           contest_team:
             contest_team_members:
@@ -2002,7 +1979,6 @@
                 _eq: X-Hasura-User-Id
     - role: teacher
       permission:
-        backend_only: false
         filter:
           contest_team:
             contest_team_members:
@@ -2010,7 +1986,6 @@
                 _eq: X-Hasura-User-Id
     - role: user
       permission:
-        backend_only: false
         filter:
           contest_team:
             contest_team_members:
@@ -2198,7 +2173,6 @@
   delete_permissions:
     - role: counselor
       permission:
-        backend_only: false
         filter:
           contest:
             contest_managers:
@@ -2206,7 +2180,6 @@
                 _eq: X-Hasura-User-Id
     - role: student
       permission:
-        backend_only: false
         filter:
           contest:
             contest_managers:
@@ -2214,7 +2187,6 @@
                 _eq: X-Hasura-User-Id
     - role: teacher
       permission:
-        backend_only: false
         filter:
           contest:
             contest_managers:
@@ -2222,7 +2194,6 @@
                 _eq: X-Hasura-User-Id
     - role: user
       permission:
-        backend_only: false
         filter:
           contest:
             contest_managers:
@@ -2429,15 +2400,12 @@
   delete_permissions:
     - role: counselor
       permission:
-        backend_only: false
         filter: {}
     - role: student
       permission:
-        backend_only: false
         filter: {}
     - role: teacher
       permission:
-        backend_only: false
         filter: {}
 - table:
     name: course_comment_likes
@@ -2515,15 +2483,12 @@
   delete_permissions:
     - role: counselor
       permission:
-        backend_only: false
         filter: {}
     - role: student
       permission:
-        backend_only: false
         filter: {}
     - role: teacher
       permission:
-        backend_only: false
         filter: {}
 - table:
     name: course_comment_stars
@@ -2601,15 +2566,12 @@
   delete_permissions:
     - role: counselor
       permission:
-        backend_only: false
         filter: {}
     - role: student
       permission:
-        backend_only: false
         filter: {}
     - role: teacher
       permission:
-        backend_only: false
         filter: {}
 - table:
     name: course_info
@@ -2690,15 +2652,12 @@
   delete_permissions:
     - role: counselor
       permission:
-        backend_only: false
         filter: {}
     - role: student
       permission:
-        backend_only: false
         filter: {}
     - role: teacher
       permission:
-        backend_only: false
         filter: {}
 - table:
     name: course_manager
@@ -2871,15 +2830,12 @@
   delete_permissions:
     - role: counselor
       permission:
-        backend_only: false
         filter: {}
     - role: student
       permission:
-        backend_only: false
         filter: {}
     - role: teacher
       permission:
-        backend_only: false
         filter: {}
 - table:
     name: department
@@ -2948,7 +2904,6 @@
   delete_permissions:
     - role: counselor
       permission:
-        backend_only: false
         filter: {}
 - table:
     name: honor_application
@@ -3023,7 +2978,6 @@
   delete_permissions:
     - role: student
       permission:
-        backend_only: false
         filter:
           student_uuid:
             _eq: X-Hasura-User-Id
@@ -3096,7 +3050,6 @@
   delete_permissions:
     - role: counselor
       permission:
-        backend_only: false
         filter: {}
 - table:
     name: manager_permissions
@@ -3263,11 +3216,9 @@
   delete_permissions:
     - role: counselor
       permission:
-        backend_only: false
         filter: {}
     - role: teacher
       permission:
-        backend_only: false
         filter: {}
 - table:
     name: postgraduate_application_history
@@ -3340,7 +3291,6 @@
   delete_permissions:
     - role: counselor
       permission:
-        backend_only: false
         filter: {}
 - table:
     name: postgraduate_mentor_info
@@ -3479,11 +3429,9 @@
   delete_permissions:
     - role: counselor
       permission:
-        backend_only: false
         filter: {}
     - role: teacher
       permission:
-        backend_only: false
         filter:
           user_id:
             _eq: X-Hasura-User-Id
@@ -3590,11 +3538,9 @@
   delete_permissions:
     - role: counselor
       permission:
-        backend_only: false
         filter: {}
     - role: teacher
       permission:
-        backend_only: false
         filter: {}
 - table:
     name: scholarships_aids
