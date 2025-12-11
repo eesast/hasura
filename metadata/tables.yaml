@@ -1,6 +1,47 @@
 - table:
     name: classes
     schema: public
+  select_permissions:
+    - role: anonymous
+      permission:
+        columns:
+          - department
+          - id
+          - name
+        filter: {}
+      comment: ""
+    - role: counselor
+      permission:
+        columns:
+          - department
+          - id
+          - name
+        filter: {}
+      comment: ""
+    - role: student
+      permission:
+        columns:
+          - department
+          - id
+          - name
+        filter: {}
+      comment: ""
+    - role: teacher
+      permission:
+        columns:
+          - department
+          - id
+          - name
+        filter: {}
+      comment: ""
+    - role: user
+      permission:
+        columns:
+          - department
+          - id
+          - name
+        filter: {}
+      comment: ""
 - table:
     name: contest
     schema: public
@@ -3051,6 +3092,50 @@
     - role: counselor
       permission:
         filter: {}
+- table:
+    name: llm_list
+    schema: public
+  select_permissions:
+    - role: anonymous
+      permission:
+        columns:
+          - deepthinkingmodel
+          - name
+          - value
+        filter: {}
+      comment: ""
+    - role: counselor
+      permission:
+        columns:
+          - deepthinkingmodel
+          - name
+          - value
+        filter: {}
+      comment: ""
+    - role: student
+      permission:
+        columns:
+          - deepthinkingmodel
+          - name
+          - value
+        filter: {}
+      comment: ""
+    - role: teacher
+      permission:
+        columns:
+          - deepthinkingmodel
+          - name
+          - value
+        filter: {}
+      comment: ""
+    - role: user
+      permission:
+        columns:
+          - deepthinkingmodel
+          - name
+          - value
+        filter: {}
+      comment: ""
 - table:
     name: manager_permissions
     schema: public
