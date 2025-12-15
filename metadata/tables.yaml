@@ -1,4 +1,7 @@
 - table:
+    name: access_key_log
+    schema: public
+- table:
     name: classes
     schema: public
   select_permissions:
@@ -3661,6 +3664,9 @@
           - salutation
           - type
         filter: {}
+- table:
+    name: user_llm_usage
+    schema: public
 - table:
     name: users
     schema: public
