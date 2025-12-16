@@ -3667,6 +3667,47 @@
 - table:
     name: user_llm_usage
     schema: public
+  select_permissions:
+    - role: anonymous
+      permission:
+        columns:
+          - student_no
+          - token_limit
+          - total_tokens_used
+        filter: {}
+      comment: ""
+    - role: counselor
+      permission:
+        columns:
+          - student_no
+          - token_limit
+          - total_tokens_used
+        filter: {}
+      comment: ""
+    - role: student
+      permission:
+        columns:
+          - student_no
+          - token_limit
+          - total_tokens_used
+        filter: {}
+      comment: ""
+    - role: teacher
+      permission:
+        columns:
+          - student_no
+          - token_limit
+          - total_tokens_used
+        filter: {}
+      comment: ""
+    - role: user
+      permission:
+        columns:
+          - student_no
+          - token_limit
+          - total_tokens_used
+        filter: {}
+      comment: ""
 - table:
     name: users
     schema: public
