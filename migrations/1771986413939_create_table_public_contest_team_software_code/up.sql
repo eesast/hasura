@@ -1,0 +1,1 @@
+CREATE TABLE "public"."contest_team_software_code" ("team_id" uuid NOT NULL, "URL" text NOT NULL, "created_at" Timestamp NOT NULL, "updated_at" timestamptz NOT NULL, "submission_count" integer NOT NULL, PRIMARY KEY ("team_id") , FOREIGN KEY ("team_id") REFERENCES "public"."contest_team"("team_id") ON UPDATE cascade ON DELETE cascade, UNIQUE ("team_id"));
