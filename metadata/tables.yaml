@@ -1238,6 +1238,13 @@
           table:
             name: contest_room_team
             schema: public
+    - name: contest_team_software_codes
+      using:
+        foreign_key_constraint_on:
+          column: team_id
+          table:
+            name: contest_team_software_code
+            schema: public
   insert_permissions:
     - role: counselor
       permission:
@@ -2035,6 +2042,13 @@
             contest_team_members:
               user_uuid:
                 _eq: X-Hasura-User-Id
+- table:
+    name: contest_team_software_code
+    schema: public
+  object_relationships:
+    - name: contest_team
+      using:
+        foreign_key_constraint_on: team_id
 - table:
     name: contest_time
     schema: public
