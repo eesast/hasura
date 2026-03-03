@@ -3167,6 +3167,9 @@
       using:
         foreign_key_constraint_on: uuid
 - table:
+    name: member_chat_record
+    schema: public
+- table:
     name: mentor_application
     schema: public
   object_relationships:
@@ -3678,6 +3681,9 @@
           - salutation
           - type
         filter: {}
+- table:
+    name: semester
+    schema: public
 - table:
     name: user_llm_usage
     schema: public
