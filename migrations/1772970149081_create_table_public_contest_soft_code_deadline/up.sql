@@ -1,0 +1,1 @@
+CREATE TABLE "public"."contest_soft_code_deadline" ("contest_id" uuid NOT NULL, "deadline" timestamptz NOT NULL, PRIMARY KEY ("contest_id") , FOREIGN KEY ("contest_id") REFERENCES "public"."contest"("id") ON UPDATE cascade ON DELETE cascade, UNIQUE ("contest_id"));

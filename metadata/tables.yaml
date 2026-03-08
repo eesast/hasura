@@ -1200,6 +1200,9 @@
               user_uuid:
                 _eq: X-Hasura-User-Id
 - table:
+    name: contest_soft_code_deadline
+    schema: public
+- table:
     name: contest_team
     schema: public
   object_relationships:
