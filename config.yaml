@@ -1,5 +1,7 @@
 version: 2
 endpoint: http://localhost:23333
+#endpoint: https://api.eesast.com/v1/graphql
+
 metadata_directory: metadata
 migrations_directory: migrations
 actions:

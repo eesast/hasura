@@ -2053,6 +2053,9 @@
       using:
         foreign_key_constraint_on: team_id
 - table:
+    name: contest_team_software_final
+    schema: public
+- table:
     name: contest_time
     schema: public
   object_relationships:
