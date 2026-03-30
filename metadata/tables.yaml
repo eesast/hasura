@@ -3160,6 +3160,9 @@
         filter: {}
       comment: ""
 - table:
+    name: llm_usage
+    schema: public
+- table:
     name: manager_permissions
     schema: public
 - table:
