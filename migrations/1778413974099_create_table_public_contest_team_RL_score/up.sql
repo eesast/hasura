@@ -1,0 +1,1 @@
+CREATE TABLE "public"."contest_team_RL_score" ("team_id" uuid NOT NULL, "score" integer NOT NULL DEFAULT 0, PRIMARY KEY ("team_id") , FOREIGN KEY ("team_id") REFERENCES "public"."contest_team"("team_id") ON UPDATE cascade ON DELETE cascade, UNIQUE ("team_id"));

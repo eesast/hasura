@@ -1213,6 +1213,13 @@
       using:
         foreign_key_constraint_on: team_leader_uuid
   array_relationships:
+    - name: contest_team_RL_scores
+      using:
+        foreign_key_constraint_on:
+          column: team_id
+          table:
+            name: contest_team_RL_score
+            schema: public
     - name: contest_team_codes
       using:
         foreign_key_constraint_on:
@@ -1455,6 +1462,45 @@
         filter:
           team_leader_uuid:
             _eq: X-Hasura-User-Id
+- table:
+    name: contest_team_RL_code
+    schema: public
+- table:
+    name: contest_team_RL_score
+    schema: public
+  object_relationships:
+    - name: contest_team
+      using:
+        foreign_key_constraint_on: team_id
+  select_permissions:
+    - role: anonymous
+      permission:
+        columns:
+          - score
+          - team_id
+        filter: {}
+      comment: ""
+    - role: counselor
+      permission:
+        columns:
+          - score
+          - team_id
+        filter: {}
+      comment: ""
+    - role: student
+      permission:
+        columns:
+          - score
+          - team_id
+        filter: {}
+      comment: ""
+    - role: teacher
+      permission:
+        columns:
+          - score
+          - team_id
+        filter: {}
+      comment: ""
 - table:
     name: contest_team_code
     schema: public
