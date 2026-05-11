@@ -3969,6 +3969,7 @@
     - role: anonymous
       permission:
         columns:
+          - date
           - id
           - tags
           - title
@@ -3977,6 +3978,7 @@
     - role: counselor
       permission:
         columns:
+          - date
           - id
           - tags
           - title
@@ -3986,6 +3988,7 @@
     - role: student
       permission:
         columns:
+          - date
           - id
           - tags
           - title
@@ -3995,6 +3998,7 @@
     - role: teacher
       permission:
         columns:
+          - date
           - id
           - tags
           - title
@@ -4004,6 +4008,7 @@
     - role: user
       permission:
         columns:
+          - date
           - id
           - tags
           - title
