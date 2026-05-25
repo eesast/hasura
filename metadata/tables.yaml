@@ -1465,6 +1465,34 @@
 - table:
     name: contest_team_RL_code
     schema: public
+  select_permissions:
+    - role: anonymous
+      permission:
+        columns:
+          - created_at
+          - submit_id
+          - team_id
+          - url
+        filter: {}
+      comment: ""
+    - role: counselor
+      permission:
+        columns:
+          - created_at
+          - submit_id
+          - team_id
+          - url
+        filter: {}
+      comment: ""
+    - role: student
+      permission:
+        columns:
+          - url
+          - created_at
+          - submit_id
+          - team_id
+        filter: {}
+      comment: ""
 - table:
     name: contest_team_RL_score
     schema: public

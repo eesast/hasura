@@ -1,0 +1,1 @@
+-- fixing metadata-migration inconsistency for weekly_date column
