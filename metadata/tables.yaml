@@ -3062,6 +3062,7 @@
           - statement
           - status
           - student_uuid
+          - transcript_url
           - year
   select_permissions:
     - role: counselor
@@ -3074,6 +3075,7 @@
           - statement
           - status
           - student_uuid
+          - transcript_url
           - updated_at
           - year
         filter: {}
@@ -3087,6 +3089,7 @@
           - statement
           - status
           - student_uuid
+          - transcript_url
           - updated_at
           - year
         filter:
@@ -3108,6 +3111,7 @@
           - statement
           - status
           - student_uuid
+          - transcript_url
           - year
         filter:
           student_uuid:

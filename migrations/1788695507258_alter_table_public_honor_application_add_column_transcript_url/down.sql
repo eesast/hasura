@@ -1,0 +1,1 @@
+alter table "public"."honor_application" drop column "transcript_url";
