@@ -3057,6 +3057,7 @@
           student_uuid:
             _eq: X-Hasura-User-Id
         columns:
+          - application_form_url
           - attachment_url
           - honor
           - statement
@@ -3068,6 +3069,7 @@
     - role: counselor
       permission:
         columns:
+          - application_form_url
           - attachment_url
           - created_at
           - honor
@@ -3082,6 +3084,7 @@
     - role: student
       permission:
         columns:
+          - application_form_url
           - attachment_url
           - created_at
           - honor
@@ -3106,6 +3109,7 @@
     - role: student
       permission:
         columns:
+          - application_form_url
           - attachment_url
           - honor
           - statement
