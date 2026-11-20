@@ -1,7 +1,7 @@
 {
   "name": "eesast-hasura",
   "dependencies": {
-    "hasura-cli": "2.36.1"
+    "hasura-cli": "2.38.0"
   },
   "scripts": {
     "console": "hasura console",
